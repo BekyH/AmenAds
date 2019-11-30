@@ -1,0 +1,32 @@
+<?xml version="1.0" encoding="utf-8"?>
+<menu xmlns:android="http://schemas.android.com/apk/res/android">
+
+    <item android:id="@+id/Ads"
+        android:title="Ads"
+         android:icon="@drawable/ic_event_black_24dp">
+
+    </item>
+    <item android:id="@+id/church"
+        android:icon="@drawable/ic_collections_black_24dp"
+        android:title="churches">
+
+    </item>
+
+    <item android:id="@+id/profile"
+        android:icon="@drawable/ic_perm_identity_black_24dp"
+        android:title="profile">
+
+    </item>
+    <item
+        android:id="@+id/setting"
+        android:icon="@drawable/ic_build_black_24dp"
+        android:title="settings">
+
+    </item>
+    <item
+        android:id="@+id/about"
+        android:icon="@drawable/ic_info_black_24dp"
+        android:title="Aboutus">
+
+    </item>
+</menu>
