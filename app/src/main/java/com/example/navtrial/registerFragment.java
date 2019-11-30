@@ -1,5 +1,6 @@
 package com.example.navtrial;
 
+import android.app.Activity;
 import android.os.Bundle;
 //import android.support.annotation.NonNull;
 //import android.support.annotation.Nullable;
@@ -25,6 +26,7 @@ import com.google.firebase.auth.FirebaseAuth;
 import com.google.android.gms.tasks.OnCompleteListener;
 import com.google.android.gms.tasks.Task;
 import com.google.firebase.auth.AuthResult;
+import com.google.firebase.auth.FirebaseUser;
 
 public class registerFragment extends Fragment {
     TextView clickhere_textview;
@@ -34,14 +36,16 @@ public class registerFragment extends Fragment {
     EditText password;
     Button reg_btn;
     private FirebaseAuth Fauth;
+    private FirebaseApp firebaseApp;
+
 //    private ProgressDialog pdialog;
 
     @Nullable
     @Override
     public View onCreateView(@NonNull LayoutInflater inflater, @Nullable ViewGroup container, @Nullable Bundle savedInstanceState) {
         View view = inflater.inflate(R.layout.register_fragment, container, false);
-//        FirebaseApp.initializeApp(getContext());
-//        Fauth = FirebaseAuth.getInstance();
+
+       Fauth = FirebaseAuth.getInstance();
 
         clickhere_textview = view.findViewById(R.id.register_click_here);
         name = view.findViewById(R.id.register_username_edit_text);
@@ -70,25 +74,33 @@ public class registerFragment extends Fragment {
                 if (uname.isEmpty() || uemail.isEmpty() || uphone.isEmpty() || upassword.isEmpty()) {
                     Toast.makeText(getContext(), "all fields are required", Toast.LENGTH_SHORT).show();
                 } else {
-//                    Fauth.createUserWithEmailAndPassword(uemail, upassword).addOnCompleteListener(new OnCompleteListener<AuthResult>() {
-//                        @Override
-//                        public void onComplete(@NonNull Task<AuthResult> task) {
-//                            if (task.isSuccessful()) {
-//                                // pdialog.dismiss();
-//                                Toast.makeText(getContext(), "success", Toast.LENGTH_SHORT).show();
+                    Fauth.createUserWithEmailAndPassword(uemail, upassword).addOnCompleteListener((Activity) getContext(),new OnCompleteListener<AuthResult>() {
+                        @Override
+                        public void onComplete(@NonNull Task<AuthResult> task) {
+                            if (task.isSuccessful()) {
+                                // pdialog.dismiss();
+                                Toast.makeText(getContext(), "success", Toast.LENGTH_SHORT).show();
+
+                            } else {
+                                Toast.makeText(getContext(), "not success", Toast.LENGTH_SHORT).show();
+                            }
+
+                        }
 //
-//                            } else {
-//                                Toast.makeText(getContext(), "not success", Toast.LENGTH_SHORT).show();
-//                            }
 //
-//                        }
-//
-//
-//                    });
-                }
+                    });
+            }
             }});
         return view;
     }
+
+    @Override
+    public void onStart() {
+        super.onStart();
+        FirebaseUser currentUser = Fauth.getCurrentUser();
+
+    }
+
     public void login(View view){
 
     }
@@ -96,6 +108,6 @@ public class registerFragment extends Fragment {
     @Override
     public void onCreate(@Nullable Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-
+        FirebaseApp.initializeApp(getContext());
     }
 }
