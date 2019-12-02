@@ -1,5 +1,6 @@
 package com.example.navtrial;
 
+import android.app.Activity;
 import android.os.Bundle;
 //import android.support.annotation.NonNull;
 //import android.support.annotation.Nullable;
@@ -9,26 +10,65 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.Button;
+import android.widget.EditText;
 import android.widget.TextView;
+import android.widget.Toast;
 
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
 import androidx.fragment.app.Fragment;
 import androidx.fragment.app.FragmentTransaction;
 
+import com.google.android.gms.tasks.OnCompleteListener;
+import com.google.android.gms.tasks.Task;
+import com.google.firebase.auth.AuthResult;
+import com.google.firebase.auth.FirebaseAuth;
+import com.google.firebase.auth.FirebaseUser;
+
 public class LoginFragment extends Fragment {
     TextView logintextview;
     Button loginbtn;
+    EditText loginemail;
+    EditText loginpaswd;
+    FirebaseAuth fauth;
+    private FirebaseAuth.AuthStateListener fauthstatelistener;
     @Nullable
     @Override
     public View onCreateView(@NonNull LayoutInflater inflater, @Nullable ViewGroup container, @Nullable Bundle savedInstanceState) {
         View view = inflater.inflate(R.layout.login_fragment,container,false);
+        fauth = FirebaseAuth.getInstance();
         logintextview = view.findViewById(R.id.login_click_here_textview);
+        loginemail = view.findViewById(R.id.login_email_edit_text);
+        loginpaswd = view.findViewById(R.id.login_password_edit_text);
         loginbtn = view.findViewById(R.id.login_btn);
+
+        fauthstatelistener = new FirebaseAuth.AuthStateListener() {
+
+
+            @Override
+            public void onAuthStateChanged(@NonNull FirebaseAuth firebaseAuth) {
+                FirebaseUser ffirebaseuser = fauth.getCurrentUser();
+//                if(ffirebaseuser!=null){
+//                    Toast.makeText(getContext()," logged in",Toast.LENGTH_SHORT).show();
+//                    ((MainActivity)getActivity()).Navigation();
+//                    ((MainActivity)getActivity()).mytoolbar.setVisibility(View.VISIBLE);
+//                    adsFragment eventFragment = new adsFragment();
+//                    FragmentTransaction fragmentTransaction = getFragmentManager().beginTransaction();
+//                    fragmentTransaction.replace(R.id.containers,eventFragment)
+//                            .addToBackStack(null)
+//                            .commit();
+//
+//                }
+//                else {
+//                    Toast.makeText(getContext(),"please log in",Toast.LENGTH_SHORT).show();
+//                }
+            }
+        };
         logintextview.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
                 registerFragment rf = new registerFragment();
+
                 FragmentTransaction fragmentTransaction = getFragmentManager().beginTransaction();
                 fragmentTransaction.replace(R.id.containers,rf)
                         .addToBackStack(null)
@@ -38,13 +78,36 @@ public class LoginFragment extends Fragment {
         loginbtn.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                ((MainActivity)getActivity()).Navigation();
-                ((MainActivity)getActivity()).mytoolbar.setVisibility(View.VISIBLE);
-                adsFragment eventFragment = new adsFragment();
-                FragmentTransaction fragmentTransaction = getFragmentManager().beginTransaction();
-                fragmentTransaction.replace(R.id.containers,eventFragment)
-                        .addToBackStack(null)
-                        .commit();
+                String gmail = loginemail.getText().toString().trim();
+                String pswd = loginpaswd.getText().toString().trim();
+
+                if(gmail.isEmpty() || pswd.isEmpty()){
+                    Toast.makeText(getContext(), "fields are empty", Toast.LENGTH_SHORT).show();
+                }
+                else{
+                    fauth.signInWithEmailAndPassword(gmail,pswd).addOnCompleteListener((Activity) getContext(), new OnCompleteListener<AuthResult>() {
+                        @Override
+                        public void onComplete(@NonNull Task<AuthResult> task) {
+                            if(task.isSuccessful()){
+                                Toast.makeText(getContext(),"Login success",Toast.LENGTH_SHORT).show();
+                                ((MainActivity)getActivity()).Navigation();
+                                ((MainActivity)getActivity()).mytoolbar.setVisibility(View.VISIBLE);
+                                adsFragment eventFragment = new adsFragment();
+                                FragmentTransaction fragmentTransaction = getFragmentManager().beginTransaction();
+                                fragmentTransaction.replace(R.id.containers,eventFragment)
+                                        .addToBackStack(null)
+                                        .commit();
+                                loginemail.setText("");
+                                loginpaswd.setText("");
+                            }
+                            else{
+                                Toast.makeText(getContext(),"not login success",Toast.LENGTH_SHORT).show();
+                            }
+                        }
+                    });
+
+                }
+
 
             }
         });
@@ -52,4 +115,9 @@ public class LoginFragment extends Fragment {
 
     }
 
+    @Override
+    public void onStart() {
+        super.onStart();
+        fauth.addAuthStateListener(fauthstatelistener);
+    }
 }

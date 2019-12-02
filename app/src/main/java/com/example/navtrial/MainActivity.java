@@ -23,9 +23,13 @@ import android.view.View;
 
 import com.google.android.material.navigation.NavigationView;
 import com.google.firebase.FirebaseApp;
+import com.google.firebase.auth.FirebaseAuth;
 
 
 public class MainActivity extends AppCompatActivity {
+    FirebaseAuth mauth;
+    private FirebaseAuth.AuthStateListener matuhListener;
+
     Toolbar mytoolbar;
     Toolbar myprofiletoolbar;
     DrawerLayout drawerLayout;
@@ -135,6 +139,7 @@ public class MainActivity extends AppCompatActivity {
     public boolean onOptionsItemSelected(MenuItem item) {
         switch (item.getItemId()){
             case R.id.logout:
+                FirebaseAuth.getInstance().signOut();
                 LoginFragment lf = new LoginFragment();
                 FragmentTransaction fragmentTransaction = getSupportFragmentManager().beginTransaction();
                 fragmentTransaction.replace(R.id.containers,lf)
