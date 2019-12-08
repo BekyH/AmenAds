@@ -21,4 +21,6 @@ public class adsFragment extends Fragment {
         return view;
 
     }
+
+
 }

@@ -85,7 +85,7 @@ public class LoginFragment extends Fragment {
                     Toast.makeText(getContext(), "fields are empty", Toast.LENGTH_SHORT).show();
                 }
                 else{
-                    fauth.signInWithEmailAndPassword(gmail,pswd).addOnCompleteListener((Activity) getContext(), new OnCompleteListener<AuthResult>() {
+                    fauth.signInWithEmailAndPassword(gmail,pswd).addOnCompleteListener( new OnCompleteListener<AuthResult>() {
                         @Override
                         public void onComplete(@NonNull Task<AuthResult> task) {
                             if(task.isSuccessful()){
