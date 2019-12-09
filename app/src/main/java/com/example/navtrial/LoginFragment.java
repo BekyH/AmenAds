@@ -80,33 +80,51 @@ public class LoginFragment extends Fragment {
             public void onClick(View v) {
                 String gmail = loginemail.getText().toString().trim();
                 String pswd = loginpaswd.getText().toString().trim();
-
-                if(gmail.isEmpty() || pswd.isEmpty()){
-                    Toast.makeText(getContext(), "fields are empty", Toast.LENGTH_SHORT).show();
-                }
-                else{
-                    fauth.signInWithEmailAndPassword(gmail,pswd).addOnCompleteListener( new OnCompleteListener<AuthResult>() {
-                        @Override
-                        public void onComplete(@NonNull Task<AuthResult> task) {
-                            if(task.isSuccessful()){
-                                Toast.makeText(getContext(),"Login success",Toast.LENGTH_SHORT).show();
-                                ((MainActivity)getActivity()).Navigation();
+                ((MainActivity)getActivity()).Navigation();
                                 ((MainActivity)getActivity()).mytoolbar.setVisibility(View.VISIBLE);
                                 adsFragment eventFragment = new adsFragment();
                                 FragmentTransaction fragmentTransaction = getFragmentManager().beginTransaction();
                                 fragmentTransaction.replace(R.id.containers,eventFragment)
                                         .addToBackStack(null)
                                         .commit();
-                                loginemail.setText("");
-                                loginpaswd.setText("");
-                            }
-                            else{
-                                Toast.makeText(getContext(),"not login success",Toast.LENGTH_SHORT).show();
-                            }
-                        }
-                    });
+//
+//                                loginemail.setText("");
+//                                loginpaswd.setText("");
+//                ((MainActivity)getActivity()).Navigation();
+//                                ((MainActivity)getActivity()).mytoolbar.setVisibility(View.VISIBLE);
+//                                ChurchListFragment eventFragment = new ChurchListFragment();
+//                                FragmentTransaction fragmentTransaction = getFragmentManager().beginTransaction();
+//                                fragmentTransaction.replace(R.id.containers,eventFragment)
+//                                        .addToBackStack(null)
+//                                        .commit();
+////
+//                if(gmail.isEmpty() || pswd.isEmpty()){
+//                    Toast.makeText(getContext(), "fields are empty", Toast.LENGTH_SHORT).show();
+//                }
+//                else{
+//                    fauth.signInWithEmailAndPassword(gmail,pswd).addOnCompleteListener( new OnCompleteListener<AuthResult>() {
+//                        @Override
+//                        public void onComplete(@NonNull Task<AuthResult> task) {
+//                            if(task.isSuccessful()){
+//                                Toast.makeText(getContext(),"Login success",Toast.LENGTH_SHORT).show();
+//                               ((MainActivity)getActivity()).Navigation();
+//                                ((MainActivity)getActivity()).mytoolbar.setVisibility(View.VISIBLE);
+//                                adsFragment eventFragment = new adsFragment();
+//                                FragmentTransaction fragmentTransaction = getFragmentManager().beginTransaction();
+//                                fragmentTransaction.replace(R.id.containers,eventFragment)
+//                                        .addToBackStack(null)
+//                                        .commit();
+//
+//                                loginemail.setText("");
+//                                loginpaswd.setText("");
+//                            }
+//                            else{
+//                                Toast.makeText(getContext(),"not login success",Toast.LENGTH_SHORT).show();
+//                            }
+//                        }
+//                    });
 
-                }
+               // }
 
 
             }

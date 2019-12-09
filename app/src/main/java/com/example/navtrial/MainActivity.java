@@ -93,14 +93,14 @@ public class MainActivity extends AppCompatActivity {
 
 
                         break;
+
                     case R.id.church:
-                        churchFragment church = new churchFragment();
+                        churchFragment cf = new churchFragment();
                         FragmentTransaction fragmentTransaction1 = getSupportFragmentManager().beginTransaction();
-                        fragmentTransaction1.replace(R.id.containers,church)
+                        fragmentTransaction1.replace(R.id.containers,cf)
                                 .addToBackStack(null)
                                 .commit();
 
-                        break;
                     case R.id.profile:
                         profileFragment pf  = new profileFragment();
                         FragmentTransaction fragmentTransaction2 = getSupportFragmentManager().beginTransaction();
