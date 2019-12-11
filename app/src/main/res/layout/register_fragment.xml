@@ -1,76 +1,123 @@
 <?xml version="1.0" encoding="utf-8"?>
+
 <LinearLayout
-xmlns:android="http://schemas.android.com/apk/res/android"
-android:layout_width="match_parent"
-android:layout_height="match_parent"
-android:orientation="vertical" >
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical">
 
 
-<TextView
-android:id="@+id/textView"
-android:layout_width="match_parent"
-android:layout_height="wrap_content"
-android:text="Registeration"
-android:layout_marginTop="40dp"
-android:gravity="center"
-android:textSize="30sp"/>
-<EditText
-android:layout_width="match_parent"
-android:layout_height="wrap_content"
-android:id="@+id/register_username_edit_text"
-android:layout_marginLeft="10dp"
-android:layout_marginRight="10dp"
+    <TextView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_gravity="center_horizontal"
+        android:gravity="center"
+        android:layout_marginTop="20dp"
+        android:text="Register"
+        android:textAllCaps="true"
+        android:textSize="20sp"
+        />
 
-android:hint="username"
-android:layout_marginTop="20dp"
-android:inputType="text"/>
-<EditText
-android:layout_width="match_parent"
-android:layout_height="wrap_content"
-android:id="@+id/register_phone_no_edit_text"
-android:layout_marginTop="20dp"
-android:layout_marginLeft="10dp"
-android:layout_marginRight="10dp"
-android:hint="phoneNo"
-android:inputType="text"/>
-<EditText
-android:layout_width="match_parent"
-android:layout_marginLeft="10dp"
-android:layout_marginRight="10dp"
-android:layout_height="wrap_content"
-android:id="@+id/register_password_edit_text"
-android:hint="password"
-android:layout_marginTop="20dp"
+    <com.google.android.material.textfield.TextInputLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:hint="username"
+        android:layout_marginTop="20dp"
+        android:layout_marginLeft="16dp"
+        android:layout_marginRight="16dp"
 
-android:inputType="textPassword"/>
-<EditText
-android:layout_width="match_parent"
-android:layout_height="wrap_content"
-android:layout_marginLeft="10dp"
-android:layout_marginRight="10dp"
-android:id="@+id/register_email_edit_text"
-android:layout_marginTop="20dp"
-android:hint="email"
-android:inputType="text"/>
-<TextView
-android:layout_width="wrap_content"
-android:layout_height="wrap_content"
-android:text="have an account? click here"
-android:layout_marginLeft="10dp"
-android:layout_marginTop="20dp"
-android:id="@+id/register_click_here"
-/>
-<Button
-android:id="@+id/register_btn"
-android:layout_width="wrap_content"
-android:layout_height="wrap_content"
-android:text="Register"
-android:layout_marginTop="20dp"
-android:layout_marginLeft="50dp"/>
+        android:id="@+id/textInputLayout5">
+
+        <com.google.android.material.textfield.TextInputEditText
+            android:id="@+id/register_username_edit_text"
+            android:layout_width="match_parent"
+
+            android:layout_height="wrap_content"
+            android:inputType="text"
+            android:maxLines="1"
+            />
+    </com.google.android.material.textfield.TextInputLayout>
+
+    <com.google.android.material.textfield.TextInputLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:hint="phonenumber"
+        android:layout_marginLeft="16dp"
+        android:layout_marginRight="16dp"
+        android:id="@+id/textInputLayout6">
+
+        <com.google.android.material.textfield.TextInputEditText
+            android:id="@+id/register_phone_no_edit_text"
+            android:layout_width="match_parent"
+
+            android:layout_height="wrap_content"
+            android:inputType="number"
+            android:maxLines="1"/>
+    </com.google.android.material.textfield.TextInputLayout>
+
+    <com.google.android.material.textfield.TextInputLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:hint="Email"
+        android:layout_marginLeft="16dp"
+        android:layout_marginRight="16dp"
+        android:id="@+id/textInputLayout7">
+
+        <com.google.android.material.textfield.TextInputEditText
+            android:id="@+id/register_email_edit_text"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+
+            android:inputType="text"
+            android:maxLines="1"/>
+    </com.google.android.material.textfield.TextInputLayout>
+
+    <com.google.android.material.textfield.TextInputLayout
+        android:id="@+id/password_text_input"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginLeft="16dp"
+        android:layout_marginRight="16dp"
+        android:hint="password"
+
+        >
+
+        <com.google.android.material.textfield.TextInputEditText
+            android:id="@+id/register_password_edit_text"
+            android:layout_width="match_parent"
+
+            android:layout_height="wrap_content"
+            android:inputType="textPassword"/>
+    </com.google.android.material.textfield.TextInputLayout>
+
+
+
+    <com.google.android.material.button.MaterialButton
+        android:id="@+id/register_btn"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+
+        android:text="Register"
+        android:layout_marginTop="15dp"
+        android:layout_gravity="center"
+       />
+
+
+
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="have an account? click here"
+        android:layout_marginLeft="16dp"
+        android:layout_marginTop="15dp"
+        android:id="@+id/register_click_here"
+
+
+        />
+
+
 
 
 </LinearLayout>
-
-
-
-

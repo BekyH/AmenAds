@@ -135,7 +135,7 @@ public class adsFragment extends Fragment {
     public void getApiData() {
         try {
             GETApiRequest getApiRequest = new GETApiRequest();
-            String url = "http://192.168.17.1:3000/ads";
+            String url = "http://10.0.2.2:3000/ads";
             getApiRequest.request(getContext(), fetchGetResultListener, url);
             Toast.makeText(getContext(), "GET API called", Toast.LENGTH_SHORT).show();
         } catch (Exception e) {

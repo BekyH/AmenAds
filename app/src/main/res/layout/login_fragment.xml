@@ -1,69 +1,87 @@
 <?xml version="1.0" encoding="utf-8"?>
+
 <LinearLayout
     xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:orientation="vertical" >
+    android:orientation="vertical">
 
 
     <TextView
-        android:id="@+id/textView"
         android:layout_width="match_parent"
+
         android:layout_height="wrap_content"
-        android:text="Login"
-        android:layout_marginTop="40dp"
+        android:layout_gravity="center_horizontal"
         android:gravity="center"
-        android:textSize="30sp"/>
-    <EditText
+        android:text="Login"
+        android:textAllCaps="true"
+        android:textSize="20sp"
+        android:layout_marginTop="30dp"/>
+
+    <com.google.android.material.textfield.TextInputLayout
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:id="@+id/login_email_edit_text"
-        android:layout_marginLeft="10dp"
-        android:layout_marginRight="10dp"
+        android:layout_marginLeft="16dp"
+        android:layout_marginRight="16dp"
+        android:layout_marginTop="30dp"
+        android:hint="Email"
+         android:id="@+id/textInputLayout7">
 
-        android:hint="email"
-        android:layout_marginTop="20dp"
-        android:inputType="text"/>
+        <com.google.android.material.textfield.TextInputEditText
+            android:id="@+id/login_email_edit_text"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
 
-    <EditText
+            android:inputType="text"
+            android:maxLines="1"/>
+    </com.google.android.material.textfield.TextInputLayout>
+
+    <com.google.android.material.textfield.TextInputLayout
+        android:layout_marginLeft="16dp"
+        android:layout_marginRight="16dp"
+        android:id="@+id/login_password_text"
         android:layout_width="match_parent"
-        android:layout_marginLeft="10dp"
-        android:layout_marginRight="10dp"
         android:layout_height="wrap_content"
-        android:id="@+id/login_password_edit_text"
         android:hint="password"
-        android:layout_marginTop="20dp"
 
-        android:inputType="textPassword"/>
+        >
+        <com.google.android.material.textfield.TextInputEditText
+            android:id="@+id/login_password_edit_text"
+            android:layout_width="match_parent"
+
+            android:layout_height="wrap_content"
+            android:inputType="textPassword"/>
+    </com.google.android.material.textfield.TextInputLayout>
+
+
+
+
+    <com.google.android.material.button.MaterialButton
+        android:id="@+id/login_btn"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+
+        android:text="Login"
+        android:layout_marginTop="15dp"
+        android:layout_gravity="center"/>
+
+
 
     <TextView
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="not registered? click here"
-        android:layout_marginLeft="10dp"
-        android:layout_marginTop="20dp"
+        android:text="have no account? click here"
+        android:layout_marginLeft="20dp"
+        android:layout_marginTop="15dp"
         android:id="@+id/login_click_here_textview"
 
+
         />
-    <LinearLayout
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:orientation="horizontal">
 
-        <Button
-            android:id="@+id/login_btn"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_marginLeft="50dp"
-            android:layout_marginTop="20dp"
-            android:text="  Login" />
 
-        <com.google.android.gms.common.SignInButton
-            android:id="@+id/sign_in_button"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_marginTop="20dp"
-            android:layout_marginLeft="50dp" />
 
-    </LinearLayout>
+
+
 </LinearLayout>

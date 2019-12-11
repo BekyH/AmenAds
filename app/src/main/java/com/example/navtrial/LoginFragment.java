@@ -42,7 +42,7 @@ public class LoginFragment extends Fragment {
     public View onCreateView(@NonNull LayoutInflater inflater, @Nullable ViewGroup container, @Nullable Bundle savedInstanceState) {
         View view = inflater.inflate(R.layout.login_fragment,container,false);
         fauth = FirebaseAuth.getInstance();
-        signInButton = view.findViewById(R.id.sign_in_button);
+//        signInButton = view.findViewById(R.id.sign_in_button);
         logintextview = view.findViewById(R.id.login_click_here_textview);
         loginemail = view.findViewById(R.id.login_email_edit_text);
         loginpaswd = view.findViewById(R.id.login_password_edit_text);
@@ -70,12 +70,12 @@ public class LoginFragment extends Fragment {
 //                }
             }
         };
-        signInButton.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-
-            }
-        });
+//        signInButton.setOnClickListener(new View.OnClickListener() {
+//            @Override
+//            public void onClick(View v) {
+//
+//            }
+//        });
         logintextview.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
