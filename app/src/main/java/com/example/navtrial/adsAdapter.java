@@ -9,12 +9,14 @@ import android.widget.TextView;
 import androidx.annotation.NonNull;
 import androidx.recyclerview.widget.RecyclerView;
 
+import com.example.navtrial.data.event;
+
 import java.util.List;
 
 public class adsAdapter extends RecyclerView.Adapter<adsAdapter.ViewHolder> {
     private List<Ads> ads;
     private Context context;
-
+    private List<event> mevents;
 
  public adsAdapter(Context context,List<Ads>ads){
      this.context = context;
@@ -34,17 +36,48 @@ public class adsAdapter extends RecyclerView.Adapter<adsAdapter.ViewHolder> {
 
     @Override
     public void onBindViewHolder(@NonNull ViewHolder holder, int position) {
-        Ads ad = ads.get(position);
+
+     if(mevents!=null){
+         event current = mevents.get(position);
+         holder.ads_name.setText(current.getName());
+         holder.ads_organizer.setText(current.getOrganizer());
+         holder.ads_location.setText(current.getLocation());
+         holder.ads_date.setText(current.getDate());
+         holder.ads_category.setText(current.getCategory());
+
+     }
+     else{
+         Ads ad = ads.get(position);
         holder.ads_name.setText(ad.getAds_name());
         holder.ads_organizer.setText(ad.getAds_organizer());
         holder.ads_location.setText(ad.getAds_location());
         holder.ads_date.setText(ad.getads_date());
 
+     }
+//        Ads ad = ads.get(position);
+//        holder.ads_name.setText(ad.getAds_name());
+//        holder.ads_organizer.setText(ad.getAds_organizer());
+//        holder.ads_location.setText(ad.getAds_location());
+//        holder.ads_date.setText(ad.getads_date());
+
+    }
+
+    public void setAds(List<event> events){
+     mevents = events;
+     notifyDataSetChanged();
+
     }
 
     @Override
     public int getItemCount() {
-        return ads.size();
+        if(mevents!=null){
+            return mevents.size();
+        }
+        else {
+            return 0;
+           // return ads.size();
+        }
+//     return ads.size();
     }
 
     public class ViewHolder extends RecyclerView.ViewHolder{

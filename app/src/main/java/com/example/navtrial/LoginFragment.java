@@ -1,6 +1,7 @@
 package com.example.navtrial;
 
 import android.app.Activity;
+import android.content.Intent;
 import android.os.Bundle;
 //import android.support.annotation.NonNull;
 //import android.support.annotation.Nullable;
@@ -19,6 +20,8 @@ import androidx.annotation.Nullable;
 import androidx.fragment.app.Fragment;
 import androidx.fragment.app.FragmentTransaction;
 
+import com.google.android.gms.common.SignInButton;
+import com.google.android.gms.signin.internal.SignInClientImpl;
 import com.google.android.gms.tasks.OnCompleteListener;
 import com.google.android.gms.tasks.Task;
 import com.google.firebase.auth.AuthResult;
@@ -31,12 +34,15 @@ public class LoginFragment extends Fragment {
     EditText loginemail;
     EditText loginpaswd;
     FirebaseAuth fauth;
+    SignInButton signInButton;
+    //SignInClientImpl mGoogleSignInClient;
     private FirebaseAuth.AuthStateListener fauthstatelistener;
     @Nullable
     @Override
     public View onCreateView(@NonNull LayoutInflater inflater, @Nullable ViewGroup container, @Nullable Bundle savedInstanceState) {
         View view = inflater.inflate(R.layout.login_fragment,container,false);
         fauth = FirebaseAuth.getInstance();
+        signInButton = view.findViewById(R.id.sign_in_button);
         logintextview = view.findViewById(R.id.login_click_here_textview);
         loginemail = view.findViewById(R.id.login_email_edit_text);
         loginpaswd = view.findViewById(R.id.login_password_edit_text);
@@ -64,6 +70,12 @@ public class LoginFragment extends Fragment {
 //                }
             }
         };
+        signInButton.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+
+            }
+        });
         logintextview.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
@@ -137,5 +149,9 @@ public class LoginFragment extends Fragment {
     public void onStart() {
         super.onStart();
         fauth.addAuthStateListener(fauthstatelistener);
+    }
+    private void signIn() {
+      //  Intent signInIntent = mGoogleSignInClient.getSignInIntent();
+       // startActivityForResult(signInIntent, RC_SIGN_IN);
     }
 }

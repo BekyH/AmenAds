@@ -5,13 +5,13 @@ public class Ads {
     private String ads_organizer;
     private String ads_date;
     private String ads_location;
-
-    public Ads(String ads_name,String ads_organizer,String ads_date,String ads_location){
+    private String ads_category;
+    public Ads(String ads_name,String ads_organizer,String ads_date,String ads_location, String ads_category){
         this.ads_name = ads_name;
         this.ads_organizer = ads_organizer;
         this.ads_date = ads_date;
         this.ads_location = ads_location;
-
+        this.ads_category = ads_category;
     }
     public String getAds_name(){
         return ads_name;

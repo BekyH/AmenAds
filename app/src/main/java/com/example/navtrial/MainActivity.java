@@ -100,7 +100,7 @@ public class MainActivity extends AppCompatActivity {
                         fragmentTransaction1.replace(R.id.containers,cf)
                                 .addToBackStack(null)
                                 .commit();
-
+                        break;
                     case R.id.profile:
                         profileFragment pf  = new profileFragment();
                         FragmentTransaction fragmentTransaction2 = getSupportFragmentManager().beginTransaction();
@@ -141,6 +141,7 @@ public class MainActivity extends AppCompatActivity {
 
         if (count == 0) {
             super.onBackPressed();
+            mytoolbar.setVisibility(View.INVISIBLE);
             //additional code
         } else {
             getSupportFragmentManager().popBackStack();
