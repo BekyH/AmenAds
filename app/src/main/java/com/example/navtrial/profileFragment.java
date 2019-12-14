@@ -14,11 +14,11 @@ import androidx.fragment.app.Fragment;
 
 public class profileFragment extends Fragment {
 
-    @Nullable
-    @Override
-    public View onCreateView(@NonNull LayoutInflater inflater, @Nullable ViewGroup container, @Nullable Bundle savedInstanceState) {
+	@Nullable
+	@Override
+	public View onCreateView(@NonNull LayoutInflater inflater, @Nullable ViewGroup container, @Nullable Bundle savedInstanceState) {
 
-        View view = inflater.inflate(R.layout.profile_fragment,container,false);
-        return view;
-    }
+		View view = inflater.inflate(R.layout.profile_fragment,container,false);
+		return view;
+	}
 }

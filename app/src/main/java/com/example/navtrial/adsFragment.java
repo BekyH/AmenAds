@@ -1,5 +1,6 @@
 package com.example.navtrial;
 
+import android.app.ProgressDialog;
 import android.os.Bundle;
 import android.view.LayoutInflater;
 import android.view.View;
@@ -7,10 +8,12 @@ import android.view.ViewGroup;
 import android.widget.Toast;
 import android.widget.Toolbar;
 
+import androidx.activity.OnBackPressedCallback;
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.fragment.app.Fragment;
+import androidx.fragment.app.FragmentTransaction;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 import androidx.viewpager.widget.ViewPager;
@@ -28,19 +31,26 @@ import com.example.navtrial.data.event;
 import com.example.navtrial.fetchapi.FetchDataListener;
 import com.example.navtrial.fetchapi.GETApiRequest;
 import com.example.navtrial.fetchapi.RequestQueueService;
+import com.example.navtrial.webService.GetAdsService;
+import com.example.navtrial.webService.ServiceBuilder;
 import com.google.android.material.tabs.TabLayout;
+import com.google.firebase.auth.FirebaseAuth;
 
 import org.json.JSONArray;
 import org.json.JSONException;
 import org.json.JSONObject;
 
+import java.io.IOException;
 import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
 
-public class adsFragment extends Fragment {
+import retrofit2.Call;
+import retrofit2.Callback;
 
+public class adsFragment extends Fragment {
+    ProgressDialog progressDialog;
     View view;
     private RecyclerView adsRecyclerView;
     private RecyclerView.Adapter adsRecyclerAdapter;
@@ -57,69 +67,39 @@ public class adsFragment extends Fragment {
     @Override
     public View onCreateView(@NonNull LayoutInflater inflater, @Nullable ViewGroup container, @Nullable Bundle savedInstanceState) {
         view = inflater.inflate(R.layout.ads_fragment, container, false);
-        adsRecyclerView = view.findViewById(R.id.ads_recycler_view);
-        //  Toolbar adstoolbar = view.findViewById(R.id.ads_toolbar);
-//        ((AppCompatActivity)getActivity()).setSupportActionBar(adstoolbar);
-        ((AppCompatActivity) getActivity()).getSupportActionBar().setSubtitle(R.id.ads_toolbar);
-        TabLayout adstablayout = view.findViewById(R.id.ads_tablayout);
-        adstablayout.addTab(adstablayout.newTab().setText("Latest"));
-        adstablayout.addTab(adstablayout.newTab().setText("today"));
-        adstablayout.addTab(adstablayout.newTab().setText("type"));
-        adstablayout.setTabGravity(TabLayout.GRAVITY_FILL);
-
-        final ViewPager adsViewpager = view.findViewById(R.id.ads_pager);
-        pageAdapter pa = new pageAdapter(getFragmentManager(), adstablayout.getTabCount());
-        adsViewpager.setAdapter(pa);
-        adsViewpager.addOnPageChangeListener(new TabLayout.TabLayoutOnPageChangeListener(adstablayout));
-        adstablayout.addOnTabSelectedListener(new TabLayout.OnTabSelectedListener() {
+        progressDialog = new ProgressDialog(getContext());
+        progressDialog.setMessage("Loading....");
+        progressDialog.show();
+        GetAdsService service = ServiceBuilder.getRetrofitInstance().create(GetAdsService.class);
+        Call<List<event>> call = service.getAllAds();
+        call.enqueue(new Callback<List<event>>() {
             @Override
-            public void onTabSelected(TabLayout.Tab tab) {
-                adsViewpager.setCurrentItem(tab.getPosition());
+            public void onResponse(Call<List<event>> call, retrofit2.Response<List<event>> response) {
+                progressDialog.dismiss();
+                //Toast.makeText(getContext(),response.body().toString(),Toast.LENGTH_LONG).show();
+                if(response.isSuccessful()){
+                    generateDatalist(response.body());
+                }
+                else {
+                    Toast.makeText(getContext(),"response is not successfult",Toast.LENGTH_SHORT).show();
+                }
 
             }
 
             @Override
-            public void onTabUnselected(TabLayout.Tab tab) {
+            public void onFailure(Call<List<event>> call, Throwable t) {
+                progressDialog.dismiss();
+                if (t instanceof IOException) {
 
-            }
+                    Toast.makeText(getContext(), t.getMessage(), Toast.LENGTH_SHORT).show();
+                    // logging probably not necessary
+                }
+                else {
+                    Toast.makeText(getContext(), "conversion issue! big problems", Toast.LENGTH_SHORT).show();
 
-            @Override
-            public void onTabReselected(TabLayout.Tab tab) {
-
+                }
             }
         });
-
-//        final JsonObjectRequest jsonObjReq = new JsonObjectRequest(Request.Method.GET,
-//                url, null,
-//                new Response.Listener() {
-//                    @Override
-//                    public void onResponse(Object response) {
-//                        Adslist = new ArrayList<>();
-//                        Adslist
-//                    }
-//
-//
-//                },
-//                new Response.ErrorListener() {
-//                    @Override
-//                    public void onErrorResponse(VolleyError error) {
-//                        //Failure Callback
-//                    }
-//                });
-
-
-//        adsRecyclerView.setHasFixedSize(true);
-        adsRecyclerView.setLayoutManager(new LinearLayoutManager(getContext()));
-
-        Adslist = new ArrayList<>();
-      for(int i = 0;i<5;i++){
-          Ads myad = new Ads("denk stota","mkc","november","addis","musica");
-            Adslist.add(myad);
-
-      }
-        adsRecyclerAdapter = new adsAdapter(getContext(), Adslist);
-        adsRecyclerView.setAdapter(adsRecyclerAdapter);
-        getApiData();
 
 
         return view;
@@ -127,10 +107,38 @@ public class adsFragment extends Fragment {
 
     @Override
     public void onCreate(@Nullable Bundle savedInstanceState) {
+        OnBackPressedCallback callback = new OnBackPressedCallback(true) {
+            @Override
+            public void handleOnBackPressed() {
+                 FirebaseAuth.getInstance().signOut();
+                LoginFragment lf = new LoginFragment();
+                FragmentTransaction fragmentTransaction =getFragmentManager().beginTransaction();
+                fragmentTransaction.replace(R.id.containers,lf)
+                        .addToBackStack(null)
+                        .commit();
+                ((MainActivity)getActivity()).mytoolbar.setVisibility(View.INVISIBLE);
+
+
+            }
+        };
         super.onCreate(savedInstanceState);
 
 
     }
+    public void getdatafromapi(){
+
+    }
+    public void generateDatalist(List<event>eventList){
+        adsRecyclerView = view.findViewById(R.id.ads_recycler_view);
+        adsRecyclerAdapter = new adsAdapter(getContext(), eventList);
+        adsRecyclerView.setLayoutManager(new LinearLayoutManager(getContext()));
+
+
+        adsRecyclerView.setAdapter(adsRecyclerAdapter);
+
+
+    }
+
 
     public void getApiData() {
         try {
@@ -242,9 +250,11 @@ public class adsFragment extends Fragment {
         }
 
         public void refreshData() {
-            adsRecyclerAdapter = new adsAdapter(getContext(), Adslist);
-            adsRecyclerView.setAdapter(adsRecyclerAdapter);
+//            adsRecyclerAdapter = new adsAdapter(getContext(), Adslist);
+//            adsRecyclerView.setAdapter(adsRecyclerAdapter);
         }
 
     };
+
+
 }

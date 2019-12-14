@@ -5,35 +5,46 @@ import androidx.room.ColumnInfo;
 import androidx.room.Entity;
 import androidx.room.PrimaryKey;
 
+import com.google.gson.annotations.SerializedName;
+
 @Entity(tableName = "ads")
 
 public class event {
+
     @PrimaryKey
     @NonNull
-    @ColumnInfo(name = "name")
+
+    @SerializedName("name")
+
     private String name;
 
-    @ColumnInfo(name = "organizer")
+    @SerializedName("organizer")
     private String organizer;
+    @SerializedName("image")
+    private String image;
 
-    @ColumnInfo(name="location")
+    @SerializedName("location")
     private String location;
 
-    @ColumnInfo(name="date")
+    @SerializedName("date")
     private String date;
 
-    @ColumnInfo(name="category")
+    @SerializedName("category")
     private String category;
 
-    public event(String name,String organizer,String location,String date,String category){
+    public event(String name,String organizer,String image,String location,String date,String category){
+
         this.name = name;
+        this.image = image;
         this.organizer = organizer;
         this.location = location;
         this.date = date;
         this.category = category;
 
     }
-
+    public String getImage(){
+        return this.image;
+    }
     public String getName(){
         return this.name;
     }

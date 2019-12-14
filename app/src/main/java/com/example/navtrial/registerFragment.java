@@ -47,7 +47,7 @@ public class registerFragment extends Fragment {
     public View onCreateView(@NonNull LayoutInflater inflater, @Nullable ViewGroup container, @Nullable Bundle savedInstanceState) {
         View view = inflater.inflate(R.layout.register_fragment, container, false);
 
-       Fauth = FirebaseAuth.getInstance();
+        Fauth = FirebaseAuth.getInstance();
         dbReference = FirebaseDatabase.getInstance().getReference("useraccounts");
         clickhere_textview = view.findViewById(R.id.register_click_here);
         name = view.findViewById(R.id.register_username_edit_text);
@@ -55,16 +55,16 @@ public class registerFragment extends Fragment {
         email = view.findViewById(R.id.register_email_edit_text);
         password = view.findViewById(R.id.register_password_edit_text);
         reg_btn = view.findViewById(R.id.register_btn);
-       clickhere_textview.setOnClickListener(new View.OnClickListener() {
-           @Override
-           public void onClick(View v) {
-               LoginFragment lf = new LoginFragment();
-               FragmentTransaction fragmentTransaction = getFragmentManager().beginTransaction();
-               fragmentTransaction.replace(R.id.containers,lf)
-                       .addToBackStack(null)
-                       .commit();
-           }
-       });
+        clickhere_textview.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                LoginFragment lf = new LoginFragment();
+                FragmentTransaction fragmentTransaction = getFragmentManager().beginTransaction();
+                fragmentTransaction.replace(R.id.containers,lf)
+                        .addToBackStack(null)
+                        .commit();
+            }
+        });
 
         reg_btn.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -137,7 +137,7 @@ public class registerFragment extends Fragment {
 //
 //
                     });
-            }
+                }
             }});
         return view;
     }

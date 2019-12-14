@@ -150,6 +150,7 @@ public class LoginFragment extends Fragment {
         super.onStart();
         fauth.addAuthStateListener(fauthstatelistener);
     }
+
     private void signIn() {
       //  Intent signInIntent = mGoogleSignInClient.getSignInIntent();
        // startActivityForResult(signInIntent, RC_SIGN_IN);

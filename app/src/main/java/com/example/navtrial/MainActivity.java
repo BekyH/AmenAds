@@ -19,6 +19,7 @@ import android.os.Bundle;
 import android.view.Menu;
 import android.view.MenuItem;
 import android.view.View;
+import android.widget.Toast;
 //
 
 import com.google.android.material.navigation.NavigationView;
@@ -27,7 +28,7 @@ import com.google.firebase.auth.FirebaseAuth;
 
 
 public class MainActivity extends AppCompatActivity {
-    FirebaseAuth mauth;
+    public FirebaseAuth mauth;
     private FirebaseAuth.AuthStateListener matuhListener;
 
     Toolbar mytoolbar;
@@ -136,16 +137,8 @@ public class MainActivity extends AppCompatActivity {
     }
     @Override
     public void onBackPressed() {
+        super.onBackPressed();
 
-        int count = getSupportFragmentManager().getBackStackEntryCount();
-
-        if (count == 0) {
-            super.onBackPressed();
-            mytoolbar.setVisibility(View.INVISIBLE);
-            //additional code
-        } else {
-            getSupportFragmentManager().popBackStack();
-        }
 
     }
 

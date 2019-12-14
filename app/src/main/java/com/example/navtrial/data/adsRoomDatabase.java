@@ -24,18 +24,21 @@ public abstract class adsRoomDatabase extends RoomDatabase {
             Executors.newFixedThreadPool(NUMBER_OF_THREADS);
 
     public static adsRoomDatabase getDatabase(final Context context) {
-        if (INSTANCE == null) {
+        if (INSTANCE != null) {
+            return INSTANCE;
+        }
             synchronized (adsRoomDatabase.class) {
-                if (INSTANCE == null) {
+
                     INSTANCE = Room.databaseBuilder(context.getApplicationContext(),
                             adsRoomDatabase.class, "amenads_database")
-                            .addCallback(sRoomDatabaseCallback)
+
                             .build();
+                return INSTANCE;
                 }
-            }
+
         }
-        return INSTANCE;
-    }
+
+
     private static RoomDatabase.Callback sRoomDatabaseCallback = new RoomDatabase.Callback() {
         @Override
         public void onOpen(@NonNull SupportSQLiteDatabase db) {
@@ -44,15 +47,15 @@ public abstract class adsRoomDatabase extends RoomDatabase {
             // If you want to keep data through app restarts,
             // comment out the following block
 
+//
+//            AdsDao dao = INSTANCE.Adsdao();
 
-            AdsDao dao = INSTANCE.Adsdao();
-
-
-            event e = new event("denk stota", "mkc", "addis", "sunday", "concert");
-            dao.inset(e);
-
-            event ew = new event("denk stota", "mkc", "addis", "sunday", "concert");
-            dao.inset(ew);
+//
+//            event e = new event("ds","denk stota", "mkc", "addis", "sunday", "concert");
+//            dao.inset(e);
+//
+//            event ew = new event("dd","denk stota", "mkc", "addis", "sunday", "concert");
+//            dao.inset(ew);
 
         }
     };
