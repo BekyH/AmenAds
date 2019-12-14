@@ -1,12 +1,10 @@
 package com.example.navtrial;
 
-import android.app.Activity;
-import android.content.Intent;
+
+import android.app.ProgressDialog;
+
 import android.os.Bundle;
-//import android.support.annotation.NonNull;
-//import android.support.annotation.Nullable;
-//import androidx.core.app.Fragment;
-//import androidx.core.app.FragmentTransaction;
+
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -21,7 +19,7 @@ import androidx.fragment.app.Fragment;
 import androidx.fragment.app.FragmentTransaction;
 
 import com.google.android.gms.common.SignInButton;
-import com.google.android.gms.signin.internal.SignInClientImpl;
+
 import com.google.android.gms.tasks.OnCompleteListener;
 import com.google.android.gms.tasks.Task;
 import com.google.firebase.auth.AuthResult;
@@ -35,6 +33,7 @@ public class LoginFragment extends Fragment {
     EditText loginpaswd;
     FirebaseAuth fauth;
     SignInButton signInButton;
+    ProgressDialog progressDialog;
     //SignInClientImpl mGoogleSignInClient;
     private FirebaseAuth.AuthStateListener fauthstatelistener;
     @Nullable
@@ -54,28 +53,10 @@ public class LoginFragment extends Fragment {
             @Override
             public void onAuthStateChanged(@NonNull FirebaseAuth firebaseAuth) {
                 FirebaseUser ffirebaseuser = fauth.getCurrentUser();
-//                if(ffirebaseuser!=null){
-//                    Toast.makeText(getContext()," logged in",Toast.LENGTH_SHORT).show();
-//                    ((MainActivity)getActivity()).Navigation();
-//                    ((MainActivity)getActivity()).mytoolbar.setVisibility(View.VISIBLE);
-//                    adsFragment eventFragment = new adsFragment();
-//                    FragmentTransaction fragmentTransaction = getFragmentManager().beginTransaction();
-//                    fragmentTransaction.replace(R.id.containers,eventFragment)
-//                            .addToBackStack(null)
-//                            .commit();
-//
-//                }
-//                else {
-//                    Toast.makeText(getContext(),"please log in",Toast.LENGTH_SHORT).show();
-//                }
+
             }
         };
-//        signInButton.setOnClickListener(new View.OnClickListener() {
-//            @Override
-//            public void onClick(View v) {
-//
-//            }
-//        });
+
         logintextview.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
@@ -90,53 +71,41 @@ public class LoginFragment extends Fragment {
         loginbtn.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
+
                 String gmail = loginemail.getText().toString().trim();
                 String pswd = loginpaswd.getText().toString().trim();
-                ((MainActivity)getActivity()).Navigation();
+
+                if(gmail.isEmpty() || pswd.isEmpty()){
+                    Toast.makeText(getContext(), "fields are empty", Toast.LENGTH_SHORT).show();
+                }
+                else{
+                    progressDialog = new ProgressDialog(getContext());
+                    progressDialog.setMessage("Loading....");
+                    progressDialog.show();
+                    fauth.signInWithEmailAndPassword(gmail,pswd).addOnCompleteListener( new OnCompleteListener<AuthResult>() {
+                        @Override
+                        public void onComplete(@NonNull Task<AuthResult> task) {
+                            if(task.isSuccessful()){
+                                progressDialog.dismiss();
+                                Toast.makeText(getContext(),"Login success",Toast.LENGTH_SHORT).show();
+                               ((MainActivity)getActivity()).Navigation();
                                 ((MainActivity)getActivity()).mytoolbar.setVisibility(View.VISIBLE);
                                 adsFragment eventFragment = new adsFragment();
                                 FragmentTransaction fragmentTransaction = getFragmentManager().beginTransaction();
                                 fragmentTransaction.replace(R.id.containers,eventFragment)
                                         .addToBackStack(null)
                                         .commit();
-//
-//                                loginemail.setText("");
-//                                loginpaswd.setText("");
-//                ((MainActivity)getActivity()).Navigation();
-//                                ((MainActivity)getActivity()).mytoolbar.setVisibility(View.VISIBLE);
-//                                ChurchListFragment eventFragment = new ChurchListFragment();
-//                                FragmentTransaction fragmentTransaction = getFragmentManager().beginTransaction();
-//                                fragmentTransaction.replace(R.id.containers,eventFragment)
-//                                        .addToBackStack(null)
-//                                        .commit();
-////
-//                if(gmail.isEmpty() || pswd.isEmpty()){
-//                    Toast.makeText(getContext(), "fields are empty", Toast.LENGTH_SHORT).show();
-//                }
-//                else{
-//                    fauth.signInWithEmailAndPassword(gmail,pswd).addOnCompleteListener( new OnCompleteListener<AuthResult>() {
-//                        @Override
-//                        public void onComplete(@NonNull Task<AuthResult> task) {
-//                            if(task.isSuccessful()){
-//                                Toast.makeText(getContext(),"Login success",Toast.LENGTH_SHORT).show();
-//                               ((MainActivity)getActivity()).Navigation();
-//                                ((MainActivity)getActivity()).mytoolbar.setVisibility(View.VISIBLE);
-//                                adsFragment eventFragment = new adsFragment();
-//                                FragmentTransaction fragmentTransaction = getFragmentManager().beginTransaction();
-//                                fragmentTransaction.replace(R.id.containers,eventFragment)
-//                                        .addToBackStack(null)
-//                                        .commit();
-//
-//                                loginemail.setText("");
-//                                loginpaswd.setText("");
-//                            }
-//                            else{
-//                                Toast.makeText(getContext(),"not login success",Toast.LENGTH_SHORT).show();
-//                            }
-//                        }
-//                    });
 
-               // }
+                                loginemail.setText("");
+                                loginpaswd.setText("");
+                            }
+                            else{
+                                Toast.makeText(getContext(),"not login success",Toast.LENGTH_SHORT).show();
+                            }
+                        }
+                    });
+
+                }
 
 
             }

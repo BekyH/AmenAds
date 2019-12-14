@@ -1,11 +1,8 @@
 package com.example.navtrial;
 
-import android.app.Activity;
+
+import android.app.ProgressDialog;
 import android.os.Bundle;
-//import android.support.annotation.NonNull;
-//import android.support.annotation.Nullable;
-//import androidx.core.app.Fragment;
-//import androidx.core.app.FragmentTransaction;
 
 import android.view.LayoutInflater;
 import android.view.View;
@@ -40,7 +37,8 @@ public class registerFragment extends Fragment {
     private FirebaseAuth Fauth;
     private FirebaseApp firebaseApp;
     private DatabaseReference dbReference;
-//    private ProgressDialog pdialog;
+    ProgressDialog progressDialog;
+
 
     @Nullable
     @Override
@@ -76,7 +74,9 @@ public class registerFragment extends Fragment {
                 if (uname.isEmpty() || uemail.isEmpty() || uphone.isEmpty() || upassword.isEmpty()) {
                     Toast.makeText(getContext(), "all fields are required", Toast.LENGTH_SHORT).show();
                 } else {
-
+                    progressDialog = new ProgressDialog(getContext());
+                    progressDialog.setMessage("Loading....");
+                    progressDialog.show();
                     Fauth.createUserWithEmailAndPassword(uemail, upassword).addOnCompleteListener(new OnCompleteListener<AuthResult>() {
                         @Override
                         public void onComplete(@NonNull Task<AuthResult> task) {
@@ -89,7 +89,13 @@ public class registerFragment extends Fragment {
                                     @Override
                                     public void onComplete(@NonNull Task<Void> task) {
                                         if(task.isSuccessful()){
+                                            progressDialog.dismiss();
                                             Toast.makeText(getContext(), "Register success", Toast.LENGTH_SHORT).show();
+                                            LoginFragment lf = new LoginFragment();
+                                            FragmentTransaction fragmentTransaction = getFragmentManager().beginTransaction();
+                                            fragmentTransaction.replace(R.id.containers,lf)
+                                                    .addToBackStack(null)
+                                                    .commit();
                                         }
                                         else{
                                             Toast.makeText(getContext(), "Register not success", Toast.LENGTH_SHORT).show();
@@ -97,33 +103,10 @@ public class registerFragment extends Fragment {
                                     }
                                 });
 
-//                                FirebaseDatabase.getInstance().getReference("Users").
-//                                        child(FirebaseAuth.getInstance().getCurrentUser().getUid()).setValue(user).addOnCompleteListener(new OnCompleteListener<Void>() {
-//                                    @Override
-//                                    public void onComplete(@NonNull Task<Void> task) {
-//                                        if(task.isSuccessful()){
-////                                            LoginFragment lf = new LoginFragment();
-////                                            FragmentTransaction fragmentTransaction = getFragmentManager().beginTransaction();
-////                                            fragmentTransaction.replace(R.id.containers,lf)
-////                                                    .addToBackStack(null)
-//////                                                    .commit();
-//                                            Toast.makeText(getContext(), "Register success", Toast.LENGTH_SHORT).show();
-//                                        }
-//                                        else{
-//                                            Toast.makeText(getContext(), "Register not success", Toast.LENGTH_SHORT).show();
-//                                        }
-//                                    }
-//                                });
-                                name.setText("");
+                name.setText("");
                                 email.setText("");
                                 phone.setText("");
                                 password.setText("");
-//                                Toast.makeText(getContext(), " success", Toast.LENGTH_SHORT).show();
-//                                LoginFragment lf = new LoginFragment();
-//                                            FragmentTransaction fragmentTransaction = getFragmentManager().beginTransaction();
-//                                            fragmentTransaction.replace(R.id.containers,lf)
-//                                                    .addToBackStack(null)
-//                                                    .commit();
 
                             } else {
                                 Toast.makeText(getContext(), "not success", Toast.LENGTH_SHORT).show();
@@ -149,9 +132,7 @@ public class registerFragment extends Fragment {
 
     }
 
-    public void login(View view){
 
-    }
 
     @Override
     public void onCreate(@Nullable Bundle savedInstanceState) {

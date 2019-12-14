@@ -50,7 +50,7 @@ public class adsFragment extends Fragment {
                     generateDatalist(response.body());
                 }
                 else {
-                    Toast.makeText(getContext(),"response is not successfult",Toast.LENGTH_SHORT).show();
+                    Toast.makeText(getContext(),"response is not successfull",Toast.LENGTH_SHORT).show();
                 }
 
             }

@@ -137,7 +137,15 @@ public class MainActivity extends AppCompatActivity {
     }
     @Override
     public void onBackPressed() {
-        super.onBackPressed();
+        int backbuttoncount = 0;
+        if(backbuttoncount>=1){
+            finish();
+        }
+        else{
+            Toast.makeText(getApplicationContext(),"press again to exit",Toast.LENGTH_SHORT).show();
+            backbuttoncount++;
+
+        }
 
 
     }
