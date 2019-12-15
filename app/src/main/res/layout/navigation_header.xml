@@ -14,19 +14,10 @@
         android:layout_marginTop="10dp"
         android:textSize="14sp"
         android:textStyle="bold"
-        android:textColor="#000"/>
-    <!--<TextView-->
-    <!--android:layout_width="wrap_content"-->
-    <!--android:layout_height="wrap_content"-->
-    <!--android:gravity="left"-->
-    <!--android:paddingBottom="16dp"-->
-    <!--android:paddingLeft="16dp"-->
-    <!--android:text="Subheader"-->
-    <!--android:textSize="14sp"-->
-    <!--android:textStyle="bold"-->
-    <!--android:textColor="#000"/>-->
+        android:textColor="#ffffff"/>
+
     <androidx.appcompat.widget.AppCompatImageView
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:src="@drawable/zayride"/>
+        android:src="@drawable/amenadslogo"/>
 </androidx.appcompat.widget.LinearLayoutCompat>

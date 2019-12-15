@@ -30,7 +30,7 @@ import com.google.firebase.auth.FirebaseAuth;
 public class MainActivity extends AppCompatActivity {
     public FirebaseAuth mauth;
     private FirebaseAuth.AuthStateListener matuhListener;
-
+    int backbuttoncount;
     Toolbar mytoolbar;
     Toolbar myprofiletoolbar;
     DrawerLayout drawerLayout;
@@ -40,6 +40,7 @@ public class MainActivity extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
+        backbuttoncount = 0;
         FirebaseApp.initializeApp(this);
         mytoolbar = findViewById(R.id.my_toolbar);
         registerFragment register = new registerFragment();
@@ -48,11 +49,7 @@ public class MainActivity extends AppCompatActivity {
                 .addToBackStack(null)
         .commit();
         mytoolbar.setVisibility(View.INVISIBLE);
-        //Navigation();
-//        myprofiletoolbar = findViewById(R.id.myprofiletoolbar);
-//        if (myprofiletoolbar != null) {
-//            setSupportActionBar(myprofiletoolbar);
-////        }
+
 
     }
     public void Navigation(){
@@ -65,7 +62,7 @@ public class MainActivity extends AppCompatActivity {
             @Override
             public void onDrawerOpened(View drawerView) {
                 super.onDrawerOpened(drawerView);
-//               Toast.makeText(MainActivity.this,"open",Toast.LENGTH_SHORT).show();
+
             }
 
             @Override
@@ -137,7 +134,7 @@ public class MainActivity extends AppCompatActivity {
     }
     @Override
     public void onBackPressed() {
-        int backbuttoncount = 0;
+
         if(backbuttoncount>=1){
             finish();
         }

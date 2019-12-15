@@ -9,10 +9,11 @@
     android:orientation="vertical">
 
     <ImageView
-        android:layout_marginTop="20dp"
+
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:src="@drawable/amenadslogo"
+        android:cropToPadding="true"
         android:layout_gravity="center"/>
     <TextView
         android:layout_width="match_parent"
@@ -23,14 +24,14 @@
         android:text="Login"
         android:textAllCaps="true"
         android:textSize="20sp"
-        android:layout_marginTop="30dp"/>
+        android:layout_marginTop="10dp"/>
 
     <com.google.android.material.textfield.TextInputLayout
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_marginLeft="16dp"
         android:layout_marginRight="16dp"
-        android:layout_marginTop="30dp"
+        android:layout_marginTop="20dp"
         android:hint="Email"
          android:id="@+id/textInputLayout7">
 
