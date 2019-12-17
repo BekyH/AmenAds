@@ -1,8 +1,10 @@
 package com.example.navtrial;
 
 
+import android.app.AlertDialog;
 import android.app.ProgressDialog;
 
+import android.content.DialogInterface;
 import android.os.Bundle;
 
 import android.view.LayoutInflater;
@@ -87,7 +89,7 @@ public class LoginFragment extends Fragment {
                         public void onComplete(@NonNull Task<AuthResult> task) {
                             if(task.isSuccessful()){
                                 progressDialog.dismiss();
-                                Toast.makeText(getContext(),"Login success",Toast.LENGTH_SHORT).show();
+
                                ((MainActivity)getActivity()).Navigation();
                                 ((MainActivity)getActivity()).mytoolbar.setVisibility(View.VISIBLE);
                                 adsFragment eventFragment = new adsFragment();
@@ -100,7 +102,20 @@ public class LoginFragment extends Fragment {
                                 loginpaswd.setText("");
                             }
                             else{
-                                Toast.makeText(getContext(),"not login success",Toast.LENGTH_SHORT).show();
+                                loginemail.setText("");
+                                loginpaswd.setText("");
+                                progressDialog.dismiss();
+                                AlertDialog alertDialog = new AlertDialog.Builder(getContext()).create();
+                                alertDialog.setTitle("Login Failed");
+                                alertDialog.setMessage(" please try again!!");
+                                alertDialog.setButton(AlertDialog.BUTTON_POSITIVE, "OK",
+                                        new DialogInterface.OnClickListener() {
+                                            public void onClick(DialogInterface dialog, int which) {
+                                                dialog.dismiss();
+                                            }
+                                        });
+                                alertDialog.show();
+
                             }
                         }
                     });
