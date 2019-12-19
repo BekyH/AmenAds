@@ -77,18 +77,18 @@ public class LoginFragment extends Fragment {
                 String gmail = loginemail.getText().toString().trim();
                 String pswd = loginpaswd.getText().toString().trim();
 
-                if(gmail.isEmpty() || pswd.isEmpty()){
-                    Toast.makeText(getContext(), "fields are empty", Toast.LENGTH_SHORT).show();
-                }
-                else{
-                    progressDialog = new ProgressDialog(getContext());
-                    progressDialog.setMessage("Loading....");
-                    progressDialog.show();
-                    fauth.signInWithEmailAndPassword(gmail,pswd).addOnCompleteListener( new OnCompleteListener<AuthResult>() {
-                        @Override
-                        public void onComplete(@NonNull Task<AuthResult> task) {
-                            if(task.isSuccessful()){
-                                progressDialog.dismiss();
+//                if(gmail.isEmpty() || pswd.isEmpty()){
+//                    Toast.makeText(getContext(), "fields are empty", Toast.LENGTH_SHORT).show();
+//                }
+//                else{
+//                    progressDialog = new ProgressDialog(getContext());
+//                    progressDialog.setMessage("Loading....");
+//                    progressDialog.show();
+//                    fauth.signInWithEmailAndPassword(gmail,pswd).addOnCompleteListener( new OnCompleteListener<AuthResult>() {
+//                        @Override
+//                        public void onComplete(@NonNull Task<AuthResult> task) {
+//                            if(task.isSuccessful()){
+//                                progressDialog.dismiss();
 
                                ((MainActivity)getActivity()).Navigation();
                                 ((MainActivity)getActivity()).mytoolbar.setVisibility(View.VISIBLE);
@@ -97,30 +97,30 @@ public class LoginFragment extends Fragment {
                                 fragmentTransaction.replace(R.id.containers,eventFragment)
                                         .addToBackStack(null)
                                         .commit();
-
-                                loginemail.setText("");
-                                loginpaswd.setText("");
-                            }
-                            else{
-                                loginemail.setText("");
-                                loginpaswd.setText("");
-                                progressDialog.dismiss();
-                                AlertDialog alertDialog = new AlertDialog.Builder(getContext()).create();
-                                alertDialog.setTitle("Login Failed");
-                                alertDialog.setMessage(" please try again!!");
-                                alertDialog.setButton(AlertDialog.BUTTON_POSITIVE, "OK",
-                                        new DialogInterface.OnClickListener() {
-                                            public void onClick(DialogInterface dialog, int which) {
-                                                dialog.dismiss();
-                                            }
-                                        });
-                                alertDialog.show();
-
-                            }
-                        }
-                    });
-
-                }
+//
+//                                loginemail.setText("");
+//                                loginpaswd.setText("");
+//                            }
+//                            else{
+//                                loginemail.setText("");
+//                                loginpaswd.setText("");
+//                                progressDialog.dismiss();
+//                                AlertDialog alertDialog = new AlertDialog.Builder(getContext()).create();
+//                                alertDialog.setTitle("Login Failed");
+//                                alertDialog.setMessage(" please try again!!");
+//                                alertDialog.setButton(AlertDialog.BUTTON_POSITIVE, "OK",
+//                                        new DialogInterface.OnClickListener() {
+//                                            public void onClick(DialogInterface dialog, int which) {
+//                                                dialog.dismiss();
+//                                            }
+//                                        });
+//                                alertDialog.show();
+//
+//                            }
+//                        }
+//                    });
+//
+//                }
 
 
             }

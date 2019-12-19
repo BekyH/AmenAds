@@ -32,6 +32,7 @@ public class adsAdapter extends RecyclerView.Adapter<adsAdapter.ViewHolder> {
  public adsAdapter(Context context,List<event>ads){
      this.context = context;
      this.ads = ads;
+     LayoutInflater.from(context);
 
  }
     @NonNull

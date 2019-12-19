@@ -1,5 +1,13 @@
 <resources>
-    <string name="app_name">Amen ads</string>
-    <string name="open">Open</string>
-    <string name="close">Close</string>
+<string name="app_name">Amen ads</string>
+<string name="open">Open</string>
+<string name="close">Close</string>
+<string name="username">Username</string>
+<string name="Phone_number">Phone Number</string>
+<string name="email">Email</string>
+<string name="password">Password</string>
+<string name="register">Register</string>
+<string name="login">Login</string>
+<string name="register_click_here">have an account? click here</string>
+<string name="login_click_here">have no account? click here</string>
 </resources>

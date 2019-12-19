@@ -1,7 +1,9 @@
 package com.example.navtrial;
 
 
+import android.app.AlertDialog;
 import android.app.ProgressDialog;
+import android.content.DialogInterface;
 import android.os.Bundle;
 
 import android.view.LayoutInflater;
@@ -109,7 +111,17 @@ public class registerFragment extends Fragment {
                                 password.setText("");
 
                             } else {
-                                Toast.makeText(getContext(), "not success", Toast.LENGTH_SHORT).show();
+                                progressDialog.dismiss();
+                                AlertDialog alertDialog = new AlertDialog.Builder(getContext()).create();
+                                alertDialog.setTitle("Registeration Failed");
+                                alertDialog.setMessage(" check your connection and  try again!!");
+                                alertDialog.setButton(AlertDialog.BUTTON_POSITIVE, "OK",
+                                        new DialogInterface.OnClickListener() {
+                                            public void onClick(DialogInterface dialog, int which) {
+                                                dialog.dismiss();
+                                            }
+                                        });
+                                alertDialog.show();;
                                 name.setText("");
                                 email.setText("");
                                 phone.setText("");
