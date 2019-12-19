@@ -14,8 +14,13 @@ import androidx.recyclerview.widget.RecyclerView;
 import com.example.navtrial.data.event;
 import com.example.navtrial.webService.GetAdsService;
 import com.example.navtrial.webService.ServiceBuilder;
+import com.example.navtrial.webService.TabsAdapter;
+import com.google.android.material.tabs.TabLayout;
+
 import java.io.IOException;
 import java.util.List;
+
+import androidx.viewpager.widget.ViewPager;
 import retrofit2.Call;
 import retrofit2.Callback;
 
@@ -36,6 +41,32 @@ public class adsFragment extends Fragment {
     @Override
     public View onCreateView(@NonNull LayoutInflater inflater, @Nullable ViewGroup container, @Nullable Bundle savedInstanceState) {
         view = inflater.inflate(R.layout.ads_fragment, container, false);
+
+        TabLayout tabLayout = (TabLayout) view.findViewById(R.id.ads_tablayout);
+        tabLayout.addTab(tabLayout.newTab().setText("ToDay"));
+        tabLayout.addTab(tabLayout.newTab().setText("LATEST"));
+        tabLayout.addTab(tabLayout.newTab().setText("TYPE"));
+        tabLayout.setTabGravity(TabLayout.GRAVITY_FILL);
+        final ViewPager viewPager =(ViewPager)view.findViewById(R.id.ads_pager);
+        TabsAdapter tabsAdapter = new TabsAdapter(getFragmentManager(), tabLayout.getTabCount());
+        viewPager.setAdapter(tabsAdapter);
+        viewPager.addOnPageChangeListener(new TabLayout.TabLayoutOnPageChangeListener(tabLayout));
+        tabLayout.setOnTabSelectedListener(new TabLayout.OnTabSelectedListener() {
+            @Override
+            public void onTabSelected(TabLayout.Tab tab) {
+                viewPager.setCurrentItem(tab.getPosition());
+            }
+            @Override
+            public void onTabUnselected(TabLayout.Tab tab) {
+
+            }
+            @Override
+            public void onTabReselected(TabLayout.Tab tab) {
+
+            }
+        });
+
+
         progressDialog = new ProgressDialog(getContext());
         progressDialog.setMessage("Loading....");
         progressDialog.show();

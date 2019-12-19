@@ -24,7 +24,7 @@
    </androidx.appcompat.widget.Toolbar>
    <com.google.android.material.tabs.TabLayout
        android:layout_width="match_parent"
-       android:background="#D81B60"
+       android:background="#1BACD8"
        android:layout_height="wrap_content"
        android:id="@+id/ads_tablayout"
        android:elevation="6dp"
@@ -33,7 +33,7 @@
    </com.google.android.material.tabs.TabLayout>
       <androidx.viewpager.widget.ViewPager
           android:layout_width="match_parent"
-          android:background="#D81B60"
+          android:background="#6A1BD8"
           android:layout_height="fill_parent"
           android:id="@+id/ads_pager">
 
