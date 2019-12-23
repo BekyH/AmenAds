@@ -48,15 +48,15 @@ public class adsFragment extends Fragment    {
         progressDialog = new ProgressDialog(getContext());
         progressDialog.setMessage("Loading....");
         progressDialog.show();
-        GetAdsService service = ServiceBuilder.getRetrofitInstance().create(GetAdsService.class);
-        Call<List<event>> call = service.getAllAds();
+        GetAdsService ads_service = ServiceBuilder.getRetrofitInstance().create(GetAdsService.class);
+        Call<List<event>> call = ads_service.getAllAds();
         call.enqueue(new Callback<List<event>>() {
             @Override
             public void onResponse(Call<List<event>> call, retrofit2.Response<List<event>> response) {
                 progressDialog.dismiss();
 
                 if(response.isSuccessful()){
-                    generateDatalist(response.body());
+                    generateAdslist(response.body());
                 }
                 else {
                     Toast.makeText(getContext(),"response is not successfull",Toast.LENGTH_SHORT).show();
@@ -86,7 +86,7 @@ public class adsFragment extends Fragment    {
 
 
 
-    public void generateDatalist(List<event> eventList){
+    public void generateAdslist(List<event> eventList){
 
         adsRecyclerView = view.findViewById(R.id.ads_recycler_view);
         adsRecyclerAdapter = new adsAdapter(getContext(), eventList);
