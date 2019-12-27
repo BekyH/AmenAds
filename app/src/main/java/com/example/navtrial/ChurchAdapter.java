@@ -17,6 +17,7 @@ import java.util.List;
 public class ChurchAdapter extends RecyclerView.Adapter<ChurchAdapter.viewHolder> {
     private Context context;
     private List<church> churches;
+    private List<church> nchurhches;
 
     public ChurchAdapter(Context context,List<church> churches){
         this.context = context;
@@ -41,6 +42,10 @@ public class ChurchAdapter extends RecyclerView.Adapter<ChurchAdapter.viewHolder
 
         }
 
+    }
+    public void setChurches(List<church> churches){
+        nchurhches = churches;
+        notifyDataSetChanged();
     }
 
     @Override

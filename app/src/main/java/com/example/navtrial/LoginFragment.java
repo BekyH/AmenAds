@@ -71,12 +71,7 @@ public class LoginFragment extends Fragment {
             }
         });
 
-        loginbtn.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
 
-                String gmail = loginemail.getText().toString().trim();
-                String pswd = loginpaswd.getText().toString().trim();
 
 
                 loginbtn.setOnClickListener(new View.OnClickListener() {
@@ -141,8 +136,6 @@ public class LoginFragment extends Fragment {
                         }
                     }
                 });
-            }
-        });
 
 
         return view;

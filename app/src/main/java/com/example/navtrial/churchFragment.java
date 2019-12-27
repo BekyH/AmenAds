@@ -51,13 +51,16 @@ public class churchFragment extends Fragment {
         Call<List<church>> call = churchService.getChruches();
         call.enqueue(new Callback<List<church>>() {
             @Override
-            public void onResponse(Call<List<church>> call, Response<List<church>> response) {
+            public void onResponse(Call<List<church>> call, retrofit2.Response<List<church>> response) {
                 progressDialog.dismiss();
-                if (response.isSuccessful()) {
+
+                if(response.isSuccessful()){
                     generateMainChurchlist(response.body());
-                } else {
-                    Toast.makeText(getContext(), "response is not successfull", Toast.LENGTH_SHORT).show();
                 }
+                else {
+                    Toast.makeText(getContext(),"response is not successfull",Toast.LENGTH_SHORT).show();
+                }
+
             }
 
             @Override
