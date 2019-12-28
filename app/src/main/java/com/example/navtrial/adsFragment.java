@@ -56,6 +56,7 @@ public class adsFragment extends Fragment    {
                 progressDialog.dismiss();
 
                 if(response.isSuccessful()){
+                  //  Toast.makeText(getContext(),response.body().toString(),Toast.LENGTH_SHORT).show();
                     generateAdslist(response.body());
                 }
                 else {

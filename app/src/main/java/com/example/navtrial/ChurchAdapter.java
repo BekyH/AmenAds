@@ -38,6 +38,7 @@ public class ChurchAdapter extends RecyclerView.Adapter<ChurchAdapter.viewHolder
     public void onBindViewHolder(@NonNull ChurchAdapter.viewHolder holder, int position) {
         if (churches!=null){
             church ch = churches.get(position);
+
             holder.main_church_name.setText(ch.getMainchurch());
 
         }

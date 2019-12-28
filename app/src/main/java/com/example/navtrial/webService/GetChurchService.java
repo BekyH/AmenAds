@@ -9,5 +9,5 @@ import retrofit2.http.GET;
 
 public interface GetChurchService {
     @GET("churches")
-    Call<List<church>> getChruches();
+    Call<List<church>> getChurches();
 }

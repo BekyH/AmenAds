@@ -25,7 +25,7 @@ public class church {
     @SerializedName("program")
     public String program;
 
-    public church(String name,String phoneno,String mainchurch,String description,String program){
+    public church(String mainchurch,String program, String name,String phoneno,String description){
         this.name = name;
         this.phoneno = phoneno;
         this.mainchurch = mainchurch;

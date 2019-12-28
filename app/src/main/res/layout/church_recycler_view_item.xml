@@ -1,8 +1,8 @@
 <?xml version="1.0" encoding="utf-8"?>
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
     android:orientation="vertical" android:layout_width="match_parent"
-    android:layout_height="match_parent">
-    <androidx.cardview.widget.CardView
+    android:layout_height="wrap_content">
+    <com.google.android.material.card.MaterialCardView
         android:id="@+id/ads_card_view"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
@@ -11,6 +11,7 @@
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:id="@+id/main_church_text_view"
+            android:gravity="center"
             android:textSize="24sp"/>
-    </androidx.cardview.widget.CardView>
+    </com.google.android.material.card.MaterialCardView>
 </LinearLayout>

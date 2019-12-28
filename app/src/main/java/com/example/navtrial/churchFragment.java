@@ -20,11 +20,15 @@ import android.widget.Toast;
 
 import com.example.navtrial.data.church;
 import com.example.navtrial.data.event;
+import com.example.navtrial.webService.GetAdsService;
 import com.example.navtrial.webService.GetChurchService;
 import com.example.navtrial.webService.ServiceBuilder;
 
 import java.io.IOException;
+import java.util.ArrayList;
+import java.util.HashSet;
 import java.util.List;
+import java.util.Set;
 
 import retrofit2.Call;
 import retrofit2.Callback;
@@ -34,7 +38,8 @@ public class churchFragment extends Fragment {
 
     ProgressDialog progressDialog;
 
-
+    ArrayList<church> mainchurches;
+    List<church> mch;
     View view;
     private RecyclerView churchRecyclerView;
     private RecyclerView.Adapter churchRecyclerAdapter;
@@ -42,53 +47,58 @@ public class churchFragment extends Fragment {
     @Nullable
     @Override
     public View onCreateView(@NonNull LayoutInflater inflater, @Nullable ViewGroup container, @Nullable Bundle savedInstanceState) {
-        View view = inflater.inflate(R.layout.church_fragment, container, false);
+        final View view = inflater.inflate(R.layout.church_fragment, container, false);
+
+
         progressDialog = new ProgressDialog(getContext());
         progressDialog.setMessage("Loading....");
         progressDialog.show();
 
         GetChurchService churchService = ServiceBuilder.getRetrofitInstance().create(GetChurchService.class);
-        Call<List<church>> call = churchService.getChruches();
-        call.enqueue(new Callback<List<church>>() {
-            @Override
-            public void onResponse(Call<List<church>> call, retrofit2.Response<List<church>> response) {
-                progressDialog.dismiss();
+        Call<List<church>> call = churchService.getChurches();
+       call.enqueue(new Callback<List<church>>() {
+           @Override
+           public void onResponse(Call<List<church>> call, retrofit2.Response<List<church>> response) {
 
-                if(response.isSuccessful()){
-                    generateMainChurchlist(response.body());
-                }
-                else {
-                    Toast.makeText(getContext(),"response is not successfull",Toast.LENGTH_SHORT).show();
-                }
+               if(response.isSuccessful()){
+                   progressDialog.dismiss();
+                   mainchurches = new ArrayList<>();
+                   mch = response.body();
 
-            }
+                  Set<church> uniqueValues = new HashSet<>(mch);
 
-            @Override
-            public void onFailure(Call<List<church>> call, Throwable t) {
-                progressDialog.dismiss();
-                if (t instanceof IOException) {
+                   churchRecyclerView = view.findViewById(R.id.church_recycler_view);
+                   churchRecyclerAdapter = new ChurchAdapter(getContext(),new ArrayList<>(new HashSet<>(mch)));
+                   // churchRecyclerAdapter = new ChurchAdapter(getContext(),mch);
+                   churchRecyclerView.setLayoutManager(new LinearLayoutManager(getContext()));
 
-                    Toast.makeText(getContext(), t.getMessage(), Toast.LENGTH_SHORT).show();
-                    // logging probably not necessary
-                }
-                else {
-                    Toast.makeText(getContext(), "conversion issue! big problems", Toast.LENGTH_SHORT).show();
 
-                }
-            }
-        });
+                   churchRecyclerView.setAdapter(churchRecyclerAdapter);
+
+               }
+               else {
+                   Toast.makeText(getContext(),"response is not succesfull",Toast.LENGTH_SHORT).show();
+               }
+
+           }
+
+           @Override
+           public void onFailure(Call<List<church>> call, Throwable t) {
+               progressDialog.dismiss();
+               if (t instanceof IOException) {
+
+                   Toast.makeText(getContext(), t.getMessage(), Toast.LENGTH_SHORT).show();
+
+               }
+               else {
+                   Toast.makeText(getContext(), "conversion issue! big problems", Toast.LENGTH_SHORT).show();
+
+               }
+           }
+       });
         return view;
     }
 
-    public void generateMainChurchlist(List<church> churchList) {
-
-        churchRecyclerView = view.findViewById(R.id.church_recycler_view);
-        churchRecyclerAdapter = new ChurchAdapter(getContext(), churchList);
-        churchRecyclerView.setLayoutManager(new LinearLayoutManager(getContext()));
 
 
-        churchRecyclerView.setAdapter(churchRecyclerAdapter);
-
-
-    }
 }
