@@ -1,16 +1,24 @@
 <?xml version="1.0" encoding="utf-8"?>
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
     android:orientation="vertical" android:layout_width="match_parent"
-    android:layout_height="match_parent">
-    <androidx.cardview.widget.CardView
+    android:layout_height="wrap_content">
+
+
+    <com.google.android.material.card.MaterialCardView
         android:id="@+id/type_card_view"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:elevation="20dp">
+        android:layout_marginLeft="@dimen/mtrl_card_spacing"
+        android:layout_marginTop="@dimen/mtrl_card_spacing"
+        android:layout_marginRight="@dimen/mtrl_card_spacing"
+        android:minHeight="100dp">
+
         <TextView
+            android:id="@+id/type"
+
             android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:id="@+id/type"/>
-    </androidx.cardview.widget.CardView>
+            android:layout_marginTop="10dp"
+            android:layout_height="67dp" />
+    </com.google.android.material.card.MaterialCardView>
 
 </LinearLayout>

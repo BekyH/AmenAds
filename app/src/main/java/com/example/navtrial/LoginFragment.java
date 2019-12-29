@@ -70,6 +70,18 @@ public class LoginFragment extends Fragment {
                         .commit();
             }
         });
+        loginbtn.setOnClickListener(new View.OnClickListener(){
+            @Override
+            public void onClick(View v) {
+                ((MainActivity)getActivity()).Navigation();
+                ((MainActivity)getActivity()).mytoolbar.setVisibility(View.VISIBLE);
+                               adsFragment eventFragment = new adsFragment();
+                               FragmentTransaction fragmentTransaction = getFragmentManager().beginTransaction();
+                                fragmentTransaction.replace(R.id.containers,eventFragment).addToBackStack(null)
+                                        .commit();
+            }
+
+        });
        // loginbtn.setOnClickListener(new View.OnClickListener() {
 //            @Override
 //            public void onClick(View v) {
@@ -81,7 +93,9 @@ public class LoginFragment extends Fragment {
 //                    Toast.makeText(getContext(), "fields are empty", Toast.LENGTH_SHORT).show();
 //                }
 //                else{
-//                    progressDialog = new ProgressDialog(getContext());
+//                    pr+
+//
+//                    ogressDialog = new ProgressDialog(getContext());
 //                    progressDialog.setMessage("Loading....");
 //                    progressDialog.show();
 //                    fauth.signInWithEmailAndPassword(gmail,pswd).addOnCompleteListener( new OnCompleteListener<AuthResult>() {
