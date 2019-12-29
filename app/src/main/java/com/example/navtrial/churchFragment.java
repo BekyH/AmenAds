@@ -63,12 +63,13 @@ public class churchFragment extends Fragment {
                if(response.isSuccessful()){
                    progressDialog.dismiss();
                    mainchurches = new ArrayList<>();
+                   List<church> list = new ArrayList<>(new HashSet<>(response.body()));
                    mch = response.body();
 
                   Set<church> uniqueValues = new HashSet<>(mch);
 
                    churchRecyclerView = view.findViewById(R.id.church_recycler_view);
-                   churchRecyclerAdapter = new ChurchAdapter(getContext(),new ArrayList<>(new HashSet<>(mch)));
+                   churchRecyclerAdapter = new ChurchAdapter(getContext(),list);
                    // churchRecyclerAdapter = new ChurchAdapter(getContext(),mch);
                    churchRecyclerView.setLayoutManager(new LinearLayoutManager(getContext()));
 
