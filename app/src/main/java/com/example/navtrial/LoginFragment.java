@@ -41,7 +41,7 @@ public class LoginFragment extends Fragment {
     @Nullable
     @Override
     public View onCreateView(@NonNull LayoutInflater inflater, @Nullable ViewGroup container, @Nullable Bundle savedInstanceState) {
-        View view = inflater.inflate(R.layout.login_fragment,container,false);
+        View view = inflater.inflate(R.layout.login_fragment, container, false);
         fauth = FirebaseAuth.getInstance();
 //        signInButton = view.findViewById(R.id.sign_in_button);
         logintextview = view.findViewById(R.id.login_click_here_textview);
@@ -65,11 +65,12 @@ public class LoginFragment extends Fragment {
                 registerFragment rf = new registerFragment();
 
                 FragmentTransaction fragmentTransaction = getFragmentManager().beginTransaction();
-                fragmentTransaction.replace(R.id.containers,rf)
+                fragmentTransaction.replace(R.id.containers, rf)
                         .addToBackStack(null)
                         .commit();
             }
         });
+<<<<<<< HEAD
         loginbtn.setOnClickListener(new View.OnClickListener(){
             @Override
             public void onClick(View v) {
@@ -103,6 +104,40 @@ public class LoginFragment extends Fragment {
 //                        public void onComplete(@NonNull Task<AuthResult> task) {
 //                            if(task.isSuccessful()){
 //                                progressDialog.dismiss();
+=======
+
+
+
+
+                loginbtn.setOnClickListener(new View.OnClickListener() {
+                    @Override
+                    public void onClick(View v) {
+
+                        String gmail = loginemail.getText().toString().trim();
+                        String pswd = loginpaswd.getText().toString().trim();
+
+
+                        if (gmail.isEmpty() || pswd.isEmpty()) {
+                            Toast.makeText(getContext(), "fields are empty", Toast.LENGTH_SHORT).show();
+                        } else {
+                            progressDialog = new ProgressDialog(getContext());
+                            progressDialog.setMessage("Loading....");
+                            progressDialog.show();
+                            fauth.signInWithEmailAndPassword(gmail, pswd).addOnCompleteListener(new OnCompleteListener<AuthResult>() {
+                                @Override
+                                public void onComplete(@NonNull Task<AuthResult> task) {
+                                    if (task.isSuccessful()) {
+                                        progressDialog.dismiss();
+
+
+                                        ((MainActivity) getActivity()).Navigation();
+                                        ((MainActivity) getActivity()).mytoolbar.setVisibility(View.VISIBLE);
+                                        adsFragment eventFragment = new adsFragment();
+                                        FragmentTransaction fragmentTransaction = getFragmentManager().beginTransaction();
+                                        fragmentTransaction.replace(R.id.containers, eventFragment)
+                                                .addToBackStack(null)
+                                                .commit();
+>>>>>>> 3b53776d1a4a0839bcca7b3b23e580e84d955e70
 //
 //                               ((MainActivity)getActivity()).Navigation();
 //                                ((MainActivity)getActivity()).mytoolbar.setVisibility(View.VISIBLE);
@@ -111,36 +146,40 @@ public class LoginFragment extends Fragment {
 //                                fragmentTransaction.replace(R.id.containers,eventFragment)
 //                                        .addToBackStack(null)
 //                                        .commit();
-//
-//                                loginemail.setText("");
-//                                loginpaswd.setText("");
-//                            }
-//                            else{
-//                                loginemail.setText("");
-//                                loginpaswd.setText("");
-//                                progressDialog.dismiss();
-//                                AlertDialog alertDialog = new AlertDialog.Builder(getContext()).create();
-//                                alertDialog.setTitle("Login Failed");
-//                                alertDialog.setMessage(" please try again!!");
-//                                alertDialog.setButton(AlertDialog.BUTTON_POSITIVE, "OK",
-//                                        new DialogInterface.OnClickListener() {
-//                                            public void onClick(DialogInterface dialog, int which) {
-//                                                dialog.dismiss();
-//                                            }
-//                                        });
-//                                alertDialog.show();
-//
-//                            }
-//                        }
-//                    });
-//
-//                }
-//
-//
-//            }
-            return view;
 
+
+                                        loginemail.setText("");
+                                        loginpaswd.setText("");
+                                    } else {
+                                        loginemail.setText("");
+                                        loginpaswd.setText("");
+                                        progressDialog.dismiss();
+                                        AlertDialog alertDialog = new AlertDialog.Builder(getContext()).create();
+                                        alertDialog.setTitle("Login Failed");
+                                        alertDialog.setMessage(" please try again!!");
+                                        alertDialog.setButton(AlertDialog.BUTTON_POSITIVE, "OK",
+                                                new DialogInterface.OnClickListener() {
+                                                    public void onClick(DialogInterface dialog, int which) {
+                                                        dialog.dismiss();
+                                                    }
+                                                });
+                                        alertDialog.show();
+
+                                    }
+                                }
+                            });
+
+                        }
+                    }
+                });
+
+
+        return view;
+//
+//
+//
     }
+
 
     @Override
     public void onStart() {

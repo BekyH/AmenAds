@@ -14,7 +14,7 @@ import java.util.List;
 public interface AdsDao {
 
     @Insert(onConflict = OnConflictStrategy.IGNORE)
-    void inset(event e);
+    void insert(event e);
 
     @Query("SELECT * FROM ads")
     LiveData<List<event>> getEvents();

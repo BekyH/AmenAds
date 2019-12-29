@@ -19,7 +19,7 @@
         android:layout_gravity="center_horizontal"
         android:gravity="center"
         android:layout_marginTop="10dp"
-        android:text="Register"
+        android:text="@string/register"
         android:textAllCaps="true"
         android:textSize="20sp"
         />
@@ -27,7 +27,7 @@
     <com.google.android.material.textfield.TextInputLayout
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:hint="username"
+        android:hint="@string/username"
         android:layout_marginTop="10dp"
         android:layout_marginLeft="16dp"
         android:layout_marginRight="16dp"
@@ -47,7 +47,7 @@
     <com.google.android.material.textfield.TextInputLayout
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:hint="phonenumber"
+        android:hint="@string/Phone_number"
         android:layout_marginLeft="16dp"
         android:layout_marginRight="16dp"
         android:id="@+id/textInputLayout6">
@@ -64,7 +64,7 @@
     <com.google.android.material.textfield.TextInputLayout
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:hint="Email"
+        android:hint="@string/email"
         android:layout_marginLeft="16dp"
         android:layout_marginRight="16dp"
         android:id="@+id/textInputLayout7">
@@ -84,7 +84,7 @@
         android:layout_height="wrap_content"
         android:layout_marginLeft="16dp"
         android:layout_marginRight="16dp"
-        android:hint="password"
+        android:hint="@string/password"
 
         >
 
@@ -102,7 +102,7 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
 
-        android:text="Register"
+        android:text="@string/register"
         android:layout_marginTop="15dp"
         android:layout_gravity="center"
        />
@@ -112,7 +112,7 @@
     <TextView
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="have an account? click here"
+        android:text="@string/register_click_here"
         android:layout_marginLeft="16dp"
         android:layout_marginTop="15dp"
         android:id="@+id/register_click_here"
