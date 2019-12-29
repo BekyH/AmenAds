@@ -24,7 +24,7 @@ public class pageAdapter extends FragmentStatePagerAdapter {
                 todayfragment tf = new todayfragment();
                 return tf;
             case 2:
-                typefragment tyf = new typefragment();
+                typesFragment tyf = new typesFragment();
                 return tyf;
             default:
                 return null;

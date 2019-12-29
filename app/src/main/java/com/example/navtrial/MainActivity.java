@@ -9,6 +9,7 @@ import androidx.appcompat.app.AppCompatActivity;
 //import androidx.core.app.FragmentTransaction;
 //import androidx.core.widget.DrawerLayout;
 import androidx.appcompat.widget.Toolbar;
+import androidx.core.content.ContextCompat;
 import androidx.drawerlayout.widget.DrawerLayout;
 import androidx.fragment.app.FragmentTransaction;
 
@@ -43,6 +44,7 @@ public class MainActivity extends AppCompatActivity {
         backbuttoncount = 0;
         FirebaseApp.initializeApp(this);
         mytoolbar = findViewById(R.id.my_toolbar);
+        mytoolbar.setTitleTextColor(getResources().getColor(R.color.login_color));
         registerFragment register = new registerFragment();
         FragmentTransaction fragmentTransactioninital = getSupportFragmentManager().beginTransaction();
         fragmentTransactioninital.replace(R.id.containers, register)
@@ -75,6 +77,7 @@ public class MainActivity extends AppCompatActivity {
 
         drawerLayout.addDrawerListener(actionBarDrawerToggle);
         actionBarDrawerToggle.syncState();
+        getWindow().setNavigationBarColor(ContextCompat.getColor(this,R.color.login_color));
         navigationView = findViewById(R.id.myNavigation);
 
         navigationView.setNavigationItemSelectedListener(new NavigationView.OnNavigationItemSelectedListener() {
@@ -83,7 +86,7 @@ public class MainActivity extends AppCompatActivity {
                 drawerLayout.closeDrawers();
                 switch (menuItem.getItemId()){
                     case R.id.Ads:
-                        adsFragment eventFragment = new adsFragment();
+                        ads1Fragment eventFragment = new ads1Fragment();
                         FragmentTransaction fragmentTransaction = getSupportFragmentManager().beginTransaction();
                         fragmentTransaction.replace(R.id.containers,eventFragment)
                                 .addToBackStack(null)
