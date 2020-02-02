@@ -86,7 +86,7 @@ public class MainActivity extends AppCompatActivity {
                 drawerLayout.closeDrawers();
                 switch (menuItem.getItemId()){
                     case R.id.Ads:
-                        ads1Fragment eventFragment = new ads1Fragment();
+                        adsFragment eventFragment = new adsFragment();
                         FragmentTransaction fragmentTransaction = getSupportFragmentManager().beginTransaction();
                         fragmentTransaction.replace(R.id.containers,eventFragment)
                                 .addToBackStack(null)
@@ -117,6 +117,7 @@ public class MainActivity extends AppCompatActivity {
                                 .commit();
                         break;
                     case R.id.about:
+
                         aboutFragment af = new aboutFragment();
                         FragmentTransaction fragmentTransaction4 = getSupportFragmentManager().beginTransaction();
                         fragmentTransaction4.replace(R.id.containers,af)

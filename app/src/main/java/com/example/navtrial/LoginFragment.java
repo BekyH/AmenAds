@@ -70,19 +70,19 @@ public class LoginFragment extends Fragment {
                         .commit();
             }
         });
-<<<<<<< HEAD
-        loginbtn.setOnClickListener(new View.OnClickListener(){
-            @Override
-            public void onClick(View v) {
-                ((MainActivity)getActivity()).Navigation();
-                ((MainActivity)getActivity()).mytoolbar.setVisibility(View.VISIBLE);
-                               adsFragment eventFragment = new adsFragment();
-                               FragmentTransaction fragmentTransaction = getFragmentManager().beginTransaction();
-                                fragmentTransaction.replace(R.id.containers,eventFragment).addToBackStack(null)
-                                        .commit();
-            }
 
-        });
+//        loginbtn.setOnClickListener(new View.OnClickListener(){
+//            @Override
+//            public void onClick(View v) {
+//                ((MainActivity)getActivity()).Navigation();
+//                ((MainActivity)getActivity()).mytoolbar.setVisibility(View.VISIBLE);
+//                               adsFragment eventFragment = new adsFragment();
+//                               FragmentTransaction fragmentTransaction = getFragmentManager().beginTransaction();
+//                                fragmentTransaction.replace(R.id.containers,eventFragment).addToBackStack(null)
+//                                        .commit();
+//            }
+//
+//        });
        // loginbtn.setOnClickListener(new View.OnClickListener() {
 //            @Override
 //            public void onClick(View v) {
@@ -104,7 +104,7 @@ public class LoginFragment extends Fragment {
 //                        public void onComplete(@NonNull Task<AuthResult> task) {
 //                            if(task.isSuccessful()){
 //                                progressDialog.dismiss();
-=======
+
 
 
 
@@ -137,7 +137,7 @@ public class LoginFragment extends Fragment {
                                         fragmentTransaction.replace(R.id.containers, eventFragment)
                                                 .addToBackStack(null)
                                                 .commit();
->>>>>>> 3b53776d1a4a0839bcca7b3b23e580e84d955e70
+
 //
 //                               ((MainActivity)getActivity()).Navigation();
 //                                ((MainActivity)getActivity()).mytoolbar.setVisibility(View.VISIBLE);
