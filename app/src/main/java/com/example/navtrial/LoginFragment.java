@@ -5,6 +5,8 @@ import android.app.AlertDialog;
 import android.app.ProgressDialog;
 
 import android.content.DialogInterface;
+import android.icu.text.SimpleDateFormat;
+import android.os.Build;
 import android.os.Bundle;
 
 import android.view.LayoutInflater;
@@ -17,6 +19,7 @@ import android.widget.Toast;
 
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
+import androidx.annotation.RequiresApi;
 import androidx.fragment.app.Fragment;
 import androidx.fragment.app.FragmentTransaction;
 
@@ -27,6 +30,9 @@ import com.google.android.gms.tasks.Task;
 import com.google.firebase.auth.AuthResult;
 import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.auth.FirebaseUser;
+
+import java.util.Date;
+import java.util.Locale;
 
 public class LoginFragment extends Fragment {
     TextView logintextview;
@@ -110,8 +116,11 @@ public class LoginFragment extends Fragment {
 
 
                 loginbtn.setOnClickListener(new View.OnClickListener() {
+                    @RequiresApi(api = Build.VERSION_CODES.N)
                     @Override
                     public void onClick(View v) {
+
+
 
                         String gmail = loginemail.getText().toString().trim();
                         String pswd = loginpaswd.getText().toString().trim();
@@ -119,6 +128,7 @@ public class LoginFragment extends Fragment {
 
                         if (gmail.isEmpty() || pswd.isEmpty()) {
                             Toast.makeText(getContext(), "fields are empty", Toast.LENGTH_SHORT).show();
+
                         } else {
                             progressDialog = new ProgressDialog(getContext());
                             progressDialog.setMessage("Loading....");
