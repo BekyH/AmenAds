@@ -54,7 +54,7 @@ public class churchFragment extends Fragment {
         progressDialog.setMessage("Loading....");
         progressDialog.show();
 
-        GetChurchService churchService = ServiceBuilder.getRetrofitInstance().create(GetChurchService.class);
+        GetChurchService churchService = new ServiceBuilder().getRetrofitInstance().create(GetChurchService.class);
         Call<List<church>> call = churchService.getChurches();
        call.enqueue(new Callback<List<church>>() {
            @Override
