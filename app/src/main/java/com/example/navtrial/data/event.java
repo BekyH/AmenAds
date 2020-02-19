@@ -17,28 +17,34 @@ public class event {
     @SerializedName("name")
 
     private String name;
-
+    @SerializedName("description")
+    private String description;
     @SerializedName("organizer")
     private String organizer;
+
+
     @SerializedName("image")
     private String image;
 
     @SerializedName("location")
     private String location;
 
-    @SerializedName("date")
-    private String date;
-
+    @SerializedName("eventDate")
+    private String eventDate;
+    @SerializedName("uploadDate")
+    private String uploadDate;
     @SerializedName("category")
     private String category;
 
-    public event(String name,String organizer,String image,String location,String date,String category){
+    public event(String name,String description,String organizer,String image,String location,String eventDate,String uploadDate,String category){
 
         this.name = name;
         this.image = image;
+        this.description = description;
         this.organizer = organizer;
         this.location = location;
-        this.date = date;
+        this.eventDate = eventDate;
+        this.uploadDate = uploadDate;
         this.category = category;
 
     }
@@ -55,9 +61,18 @@ public class event {
         return this.location;
 
     }
-    public String getDate(){
-        return this.date;
+    public String getEventDate()
+    {
+        return this.eventDate;
     }
+    public String getDescription(){
+        return this.description;
+    }
+
+    public String getUploadDate() {
+        return this.uploadDate;
+    }
+
     public String getCategory(){
         return this.category;
     }

@@ -1,7 +1,7 @@
 package com.example.navtrial;
 
 import android.app.ProgressDialog;
-import android.icu.text.SimpleDateFormat;
+import java.text.SimpleDateFormat;
 import android.os.Build;
 import android.os.Bundle;
 import android.view.LayoutInflater;
@@ -85,7 +85,7 @@ public class latesttabfragment extends Fragment {
         String date = new SimpleDateFormat("dd-MM-yyyy", Locale.getDefault()).format(new Date());
         latestads = new ArrayList<>();
         for(int i = 0;i<eventList.size();i++) {
-            if (!date.equals(eventList.get(i).getDate())) {
+            if (!date.equals(eventList.get(i).getEventDate())) {
                 latestads.add(eventList.get(i));
 
             }

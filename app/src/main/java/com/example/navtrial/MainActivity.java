@@ -77,7 +77,7 @@ public class MainActivity extends AppCompatActivity {
 
         drawerLayout.addDrawerListener(actionBarDrawerToggle);
         actionBarDrawerToggle.syncState();
-        getWindow().setNavigationBarColor(ContextCompat.getColor(this,R.color.login_color));
+//        getWindow().setNavigationBarColor(ContextCompat.getColor(this,R.color.login_color));
         navigationView = findViewById(R.id.myNavigation);
 
         navigationView.setNavigationItemSelectedListener(new NavigationView.OnNavigationItemSelectedListener() {

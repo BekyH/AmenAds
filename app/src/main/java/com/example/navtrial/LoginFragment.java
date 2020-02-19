@@ -127,7 +127,16 @@ public class LoginFragment extends Fragment {
 
 
                         if (gmail.isEmpty() || pswd.isEmpty()) {
-                            Toast.makeText(getContext(), "fields are empty", Toast.LENGTH_SHORT).show();
+                           Toast.makeText(getContext(), "fields are empty", Toast.LENGTH_SHORT).show();
+
+//                            ((MainActivity) getActivity()).Navigation();
+//                            ((MainActivity) getActivity()).mytoolbar.setVisibility(View.VISIBLE);
+//                            adsFragment eventFragment = new adsFragment();
+//                            FragmentTransaction fragmentTransaction = getFragmentManager().beginTransaction();
+//                            fragmentTransaction.replace(R.id.containers, eventFragment)
+//                                    .addToBackStack(null)
+//                                    .commit();
+
 
                         } else {
                             progressDialog = new ProgressDialog(getContext());
