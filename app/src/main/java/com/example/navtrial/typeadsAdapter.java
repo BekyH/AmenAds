@@ -32,7 +32,24 @@ public class typeadsAdapter extends RecyclerView.Adapter<typeadsAdapter.ViewHold
         view.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                Toast.makeText(context,String.valueOf(vh.getAdapterPosition()),Toast.LENGTH_SHORT).show();
+
+                switch (vh.getAdapterPosition()){
+                    case 0:
+                        Toast.makeText(context,"Conference",Toast.LENGTH_SHORT).show();
+                        break;
+                    case 1:
+                        Toast.makeText(context,"Concert",Toast.LENGTH_SHORT).show();
+                        break;
+                    case 2:
+                        Toast.makeText(context,"Worship",Toast.LENGTH_SHORT).show();
+                        break;
+                    case 3:
+                        Toast.makeText(context,"Training",Toast.LENGTH_SHORT).show();
+                        break;
+                    case 4:
+                        Toast.makeText(context,"Art",Toast.LENGTH_SHORT).show();
+                        break;
+                }
             }
         });
         return vh;

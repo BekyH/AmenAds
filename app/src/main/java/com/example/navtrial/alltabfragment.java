@@ -44,7 +44,8 @@ public class alltabfragment extends Fragment {
         view = inflater.inflate(R.layout.alltabfragment, container, false);
         progressDialog = new ProgressDialog(getContext());
         progressDialog.setMessage("Loading....");
-        progressDialog.show();
+
+
         GetAdsService ads_service = ServiceBuilder.getRetrofitInstance().create(GetAdsService.class);
         Call<List<event>> call = ads_service.getAllAds();
         call.enqueue(new Callback<List<event>>() {

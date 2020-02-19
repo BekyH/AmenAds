@@ -77,8 +77,13 @@ public class adsAdapter extends RecyclerView.Adapter<adsAdapter.ViewHolder> {
 
     @Override
     public int getItemCount() {
+       if(ads!=null){
+           return ads.size();
+       }
+       else {
+           return 0;
+       }
 
-    return ads.size();
     }
 
     public class ViewHolder extends RecyclerView.ViewHolder{
