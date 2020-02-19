@@ -2,57 +2,19 @@
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
     android:orientation="vertical" android:layout_width="match_parent"
     android:layout_height="wrap_content">
-
     <com.google.android.material.card.MaterialCardView
-        android:id="@+id/ads_card_view"
+        android:id="@+id/types_ads_card_view"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
+
         android:elevation="20dp">
-        <LinearLayout
+        <TextView
             android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:orientation="vertical"
-            android:padding="10dp">
+            android:layout_height="100dp"
+            android:id="@+id/ads_type"
+            android:gravity="center"
 
-            <TextView
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:id="@+id/ads_conference"
+            android:textSize="24sp"/>
+    </com.google.android.material.card.MaterialCardView>
 
-                android:textSize="24sp"
-                />
-            <TextView
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:id="@+id/ads_concert"
-
-
-                android:textSize="24sp"
-                />
-            <TextView
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:id="@+id/ads_worship"
-                android:textSize="24sp"
-
-                />
-            <TextView
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:id="@+id/ads_training"
-
-
-                android:textSize="24sp"
-                />
-            <TextView
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:id="@+id/ads_art"
-
-
-                android:textSize="24sp"
-                />
-        </LinearLayout>
-
-    </com.google.android.material.card.MaterialCardView>>
 </LinearLayout>

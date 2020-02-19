@@ -5,6 +5,7 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.TextView;
+import android.widget.Toast;
 
 import androidx.annotation.NonNull;
 import androidx.recyclerview.widget.RecyclerView;
@@ -14,11 +15,11 @@ import com.example.navtrial.data.event;
 import java.util.List;
 
 public class typeadsAdapter extends RecyclerView.Adapter<typeadsAdapter.ViewHolder> {
-    private List<Type> types;
+    private List<String> types;
     private Context context;
     private List<Type> mtypes;
 
-    public typeadsAdapter(Context context,List<Type> types){
+    public typeadsAdapter(Context context,List<String> types){
         this.context = context;
         this.types = types;
         LayoutInflater.from(context);
@@ -27,20 +28,25 @@ public class typeadsAdapter extends RecyclerView.Adapter<typeadsAdapter.ViewHold
     @Override
     public ViewHolder onCreateViewHolder(@NonNull ViewGroup parent, int viewType) {
         View view = LayoutInflater.from(parent.getContext()).inflate(R.layout.ads_type_recyclerview,parent,false);
-        return new ViewHolder(view);
+        final ViewHolder vh = new ViewHolder(view);
+        view.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Toast.makeText(context,String.valueOf(vh.getAdapterPosition()),Toast.LENGTH_SHORT).show();
+            }
+        });
+        return vh;
 
     }
 
     @Override
     public void onBindViewHolder(@NonNull typeadsAdapter.ViewHolder holder, int position) {
        if(types!=null){
-           final Type ty = types.get(position);
+           final String ty = types.get(position);
 
-           holder.type_conference.setText(ty.conference);
-           holder.type_concert.setText(ty.concert);
-           holder.type_worship.setText(ty.worship);
-           holder.type_training.setText(ty.training);
-           holder.type_art.setText(ty.art);
+
+           holder.adsType.setText(ty);
+
 
        }
     }
@@ -51,14 +57,11 @@ public class typeadsAdapter extends RecyclerView.Adapter<typeadsAdapter.ViewHold
     }
 
     public class ViewHolder extends RecyclerView.ViewHolder {
-        public TextView type_conference,type_concert,type_worship,type_training,type_art;
+        public TextView adsType;
         public ViewHolder(@NonNull View itemView) {
             super(itemView);
-            type_conference = itemView.findViewById(R.id.ads_conference);
-            type_concert = itemView.findViewById(R.id.ads_concert);
-            type_worship = itemView.findViewById(R.id.ads_worship);
-            type_art = itemView.findViewById(R.id.ads_art);
-            type_training = itemView.findViewById(R.id.ads_training);
+            adsType= itemView.findViewById(R.id.ads_type);
+
         }
     }
 }
