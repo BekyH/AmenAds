@@ -13,38 +13,45 @@
             android:layout_height="wrap_content"
             android:orientation="vertical"
             android:padding="10dp">
-            <ImageView
-                android:id="@+id/image_view"
+
+            <TextView
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:adjustViewBounds="true"
+                android:id="@+id/ads_conference"
+
+                android:textSize="24sp"
+                />
+            <TextView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:id="@+id/ads_concert"
+
+
+                android:textSize="24sp"
+                />
+            <TextView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:id="@+id/ads_worship"
+                android:textSize="24sp"
 
                 />
             <TextView
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:id="@+id/ads_name_text_view_card_view"
-                android:textSize="24sp"
-                />
-            <TextView
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:id="@+id/ads_organizer_text_view"
-                android:textSize="24sp"
-                />
-            <TextView
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:id="@+id/ads_location_text_view"
-                android:textSize="24sp"
-                />
-            <TextView
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:id="@+id/ads_date_text_view"
-                android:textSize="24sp"
-                />
+                android:id="@+id/ads_training"
 
+
+                android:textSize="24sp"
+                />
+            <TextView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:id="@+id/ads_art"
+
+
+                android:textSize="24sp"
+                />
         </LinearLayout>
 
     </com.google.android.material.card.MaterialCardView>>
