@@ -3,6 +3,7 @@ package com.example.navtrial;
 //import android.support.annotation.NonNull;
 //import android.support.design.widget.NavigationView;
 
+import androidx.activity.OnBackPressedCallback;
 import androidx.annotation.NonNull;
 import androidx.appcompat.app.ActionBarDrawerToggle;
 import androidx.appcompat.app.AppCompatActivity;
@@ -58,6 +59,7 @@ public class MainActivity extends AppCompatActivity {
 
         if (mytoolbar != null) {
             setSupportActionBar(mytoolbar);
+
         }
         drawerLayout = findViewById(R.id.mydrawer);
         actionBarDrawerToggle = new ActionBarDrawerToggle(MainActivity.this,drawerLayout,mytoolbar,R.string.open,R.string.close){

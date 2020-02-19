@@ -8,9 +8,13 @@ import android.widget.TextView;
 import android.widget.Toast;
 
 import androidx.annotation.NonNull;
+import androidx.fragment.app.FragmentManager;
+import androidx.fragment.app.FragmentTransaction;
 import androidx.recyclerview.widget.RecyclerView;
 
 import com.example.navtrial.data.event;
+import com.google.android.gms.dynamic.SupportFragmentWrapper;
+import com.google.android.material.tabs.TabLayout;
 
 import java.util.List;
 
@@ -27,18 +31,30 @@ public class typeadsAdapter extends RecyclerView.Adapter<typeadsAdapter.ViewHold
     @NonNull
     @Override
     public ViewHolder onCreateViewHolder(@NonNull ViewGroup parent, int viewType) {
-        View view = LayoutInflater.from(parent.getContext()).inflate(R.layout.ads_type_recyclerview,parent,false);
+         View view = LayoutInflater.from(parent.getContext()).inflate(R.layout.ads_type_recyclerview,parent,false);
         final ViewHolder vh = new ViewHolder(view);
         view.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
 
                 switch (vh.getAdapterPosition()){
+
                     case 0:
-                        Toast.makeText(context,"Conference",Toast.LENGTH_SHORT).show();
+                        conferenceFragment cf = new conferenceFragment();
+                        ((MainActivity)context).getSupportFragmentManager()
+                                .beginTransaction().
+                                replace(R.id.containers,cf)
+                                .addToBackStack(null)
+                                .commit();
+
                         break;
                     case 1:
-                        Toast.makeText(context,"Concert",Toast.LENGTH_SHORT).show();
+                       concertFragment concertFragment = new concertFragment();
+                        ((MainActivity)context).getSupportFragmentManager()
+                                .beginTransaction().
+                                replace(R.id.containers,concertFragment)
+                                .addToBackStack(null)
+                                .commit();
                         break;
                     case 2:
                         Toast.makeText(context,"Worship",Toast.LENGTH_SHORT).show();
