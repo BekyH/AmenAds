@@ -85,7 +85,7 @@ public class worshipFragment extends Fragment {
 
             }
         }
-        worshipadsRecyclerView = view.findViewById(R.id.conference_recycler_view);
+        worshipadsRecyclerView = view.findViewById(R.id.worship_recycler_view);
         worshipadsRecyclerAdapter = new worshipAdapter(getContext(),worshipads);
         worshipadsRecyclerView.setLayoutManager(new LinearLayoutManager(getContext()));
         worshipadsRecyclerView.setAdapter(worshipadsRecyclerAdapter);

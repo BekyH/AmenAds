@@ -85,7 +85,7 @@ public class concertFragment extends Fragment {
 
             }
         }
-        concertadsRecyclerView = view.findViewById(R.id.conference_recycler_view);
+        concertadsRecyclerView = view.findViewById(R.id.concert_recycler_view);
         concertadsRecyclerAdapter = new concertAdapter(getContext(),concertads);
         concertadsRecyclerView.setLayoutManager(new LinearLayoutManager(getContext()));
         concertadsRecyclerView.setAdapter(concertadsRecyclerAdapter);

@@ -35,7 +35,7 @@ public class trainingFragment extends Fragment {
     @Nullable
     @Override
     public View onCreateView(@NonNull LayoutInflater inflater, @Nullable ViewGroup container, @Nullable Bundle savedInstanceState) {
-        view = inflater.inflate(R.layout.worship_fragment,container,false);
+        view = inflater.inflate(R.layout.training_fragment,container,false);
         progressDialog = new ProgressDialog(getContext());
         progressDialog.setMessage("Loading....");
         progressDialog.show();
@@ -85,7 +85,7 @@ public class trainingFragment extends Fragment {
 
             }
         }
-        trainingadsRecyclerView = view.findViewById(R.id.conference_recycler_view);
+        trainingadsRecyclerView = view.findViewById(R.id.training_recycler_view);
         trainingadsRecyclerAdapter = new trainingAdapter(getContext(),trainingads);
         trainingadsRecyclerView.setLayoutManager(new LinearLayoutManager(getContext()));
         trainingadsRecyclerView.setAdapter(trainingadsRecyclerAdapter);

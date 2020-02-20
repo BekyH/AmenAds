@@ -29,7 +29,7 @@ public class trainingAdapter extends RecyclerView.Adapter<trainingAdapter.ViewHo
     @NonNull
     @Override
     public ViewHolder onCreateViewHolder(@NonNull ViewGroup parent, int viewType) {
-        View view = LayoutInflater.from(parent.getContext()).inflate(R.layout.worship_recyclerview,parent,false);
+        View view = LayoutInflater.from(parent.getContext()).inflate(R.layout.training_recyclerview,parent,false);
 
 
         return new ViewHolder(view);
