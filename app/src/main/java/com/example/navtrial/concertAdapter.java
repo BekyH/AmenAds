@@ -29,7 +29,7 @@ public class concertAdapter extends RecyclerView.Adapter<concertAdapter.ViewHold
     @NonNull
     @Override
     public ViewHolder onCreateViewHolder(@NonNull ViewGroup parent, int viewType) {
-        View view = LayoutInflater.from(parent.getContext()).inflate(R.layout.conference_recyclerview_item,parent,false);
+        View view = LayoutInflater.from(parent.getContext()).inflate(R.layout.concert_recyclerview,parent,false);
 
 
         return new ViewHolder(view);
