@@ -49,7 +49,7 @@ public class worshipFragment extends Fragment {
 
                 if(response.isSuccessful()){
                     //  Toast.makeText(getContext(),response.body().toString(),Toast.LENGTH_SHORT).show();
-                    getConferenceAds(response.body());
+                    getWorshipAds(response.body());
                 }
                 else {
                     Toast.makeText(getContext(),"response is not successfull",Toast.LENGTH_SHORT).show();
@@ -77,7 +77,7 @@ public class worshipFragment extends Fragment {
         return view;
     }
 
-    public void getConferenceAds(List<event> allads){
+    public void getWorshipAds(List<event> allads){
         worshipads = new ArrayList<>();
         for(int i = 0;i<allads.size();i++){
             if(allads.get(i).getCategory().equals("worship")){
@@ -86,7 +86,7 @@ public class worshipFragment extends Fragment {
             }
         }
         worshipadsRecyclerView = view.findViewById(R.id.conference_recycler_view);
-        worshipadsRecyclerAdapter = new conferenceAdapter(getContext(),worshipads);
+        worshipadsRecyclerAdapter = new worshipAdapter(getContext(),worshipads);
         worshipadsRecyclerView.setLayoutManager(new LinearLayoutManager(getContext()));
         worshipadsRecyclerView.setAdapter(worshipadsRecyclerAdapter);
 

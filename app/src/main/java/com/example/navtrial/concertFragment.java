@@ -49,7 +49,7 @@ public class concertFragment extends Fragment {
 
                 if(response.isSuccessful()){
                     //  Toast.makeText(getContext(),response.body().toString(),Toast.LENGTH_SHORT).show();
-                    getConferenceAds(response.body());
+                    getConcertAds(response.body());
                 }
                 else {
                     Toast.makeText(getContext(),"response is not successfull",Toast.LENGTH_SHORT).show();
@@ -77,7 +77,7 @@ public class concertFragment extends Fragment {
         return view;
     }
 
-    public void getConferenceAds(List<event> allads){
+    public void getConcertAds(List<event> allads){
         concertads = new ArrayList<>();
         for(int i = 0;i<allads.size();i++){
             if(allads.get(i).getCategory().equals("concert")){
@@ -86,7 +86,7 @@ public class concertFragment extends Fragment {
             }
         }
         concertadsRecyclerView = view.findViewById(R.id.conference_recycler_view);
-        concertadsRecyclerAdapter = new conferenceAdapter(getContext(),concertads);
+        concertadsRecyclerAdapter = new concertAdapter(getContext(),concertads);
         concertadsRecyclerView.setLayoutManager(new LinearLayoutManager(getContext()));
         concertadsRecyclerView.setAdapter(concertadsRecyclerAdapter);
 
