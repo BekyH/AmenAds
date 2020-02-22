@@ -13,6 +13,7 @@
         android:layout_height="wrap_content"
 
         android:background="@android:color/holo_blue_dark"
+        app:tabTextColor="#fff"
         android:elevation="6dp"
         android:minHeight="?attr/actionBarSize"
         android:theme="@style/ThemeOverlay.AppCompat.Dark.ActionBar"/>
