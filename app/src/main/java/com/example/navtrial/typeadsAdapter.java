@@ -57,13 +57,28 @@ public class typeadsAdapter extends RecyclerView.Adapter<typeadsAdapter.ViewHold
                                 .commit();
                         break;
                     case 2:
-                        Toast.makeText(context,"Worship",Toast.LENGTH_SHORT).show();
+                      worshipFragment wf = new worshipFragment();
+                        ((MainActivity)context).getSupportFragmentManager()
+                                .beginTransaction().
+                                replace(R.id.containers,wf)
+                                .addToBackStack(null)
+                                .commit();
                         break;
                     case 3:
-                        Toast.makeText(context,"Training",Toast.LENGTH_SHORT).show();
+                        trainingFragment tf = new trainingFragment();
+                        ((MainActivity)context).getSupportFragmentManager()
+                                .beginTransaction().
+                                replace(R.id.containers,tf)
+                                .addToBackStack(null)
+                                .commit();
                         break;
                     case 4:
-                        Toast.makeText(context,"Art",Toast.LENGTH_SHORT).show();
+                        artFragment af = new artFragment();
+                        ((MainActivity)context).getSupportFragmentManager()
+                            .beginTransaction().
+                                    replace(R.id.containers,af)
+                            .addToBackStack(null)
+                            .commit();
                         break;
                 }
             }
