@@ -16,10 +16,10 @@ import java.util.List;
 
 public class ChurchAdapter extends RecyclerView.Adapter<ChurchAdapter.viewHolder> {
     private Context context;
-    private List<church> churches;
+    private List<String> churches;
     private List<church> nchurhches;
 
-    public ChurchAdapter(Context context,List<church> churches){
+    public ChurchAdapter(Context context,List<String> churches){
         this.context = context;
         this.churches = churches;
         LayoutInflater.from(context);
@@ -37,9 +37,9 @@ public class ChurchAdapter extends RecyclerView.Adapter<ChurchAdapter.viewHolder
     @Override
     public void onBindViewHolder(@NonNull ChurchAdapter.viewHolder holder, int position) {
         if (churches!=null){
-            church ch = churches.get(position);
+            String ch = churches.get(position);
 
-            holder.main_church_name.setText(ch.getMainchurch());
+            holder.main_church_name.setText(ch);
 
         }
 

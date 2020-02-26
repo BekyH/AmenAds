@@ -9,7 +9,7 @@
         android:elevation="20dp">
         <TextView
             android:layout_width="match_parent"
-            android:layout_height="wrap_content"
+            android:layout_height="80dp"
             android:id="@+id/main_church_text_view"
             android:gravity="center"
             android:textSize="24sp"/>
