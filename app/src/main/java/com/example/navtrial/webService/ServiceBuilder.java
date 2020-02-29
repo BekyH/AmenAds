@@ -8,7 +8,7 @@ public class ServiceBuilder {
     private static Retrofit retrofit;
 
    // private static final String BASE_URL="http://10.0.2.2:3000/api/";
-  private static final String BASE_URL="http://10.6.154.220:3000/api/";
+  private static final String BASE_URL="http://10.5.231.160:3000/api/";
     public static Retrofit getRetrofitInstance(){
 
         if(retrofit==null){
