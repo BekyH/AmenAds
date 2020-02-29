@@ -22,6 +22,8 @@ import com.example.navtrial.webService.ServiceBuilder;
 
 import java.io.IOException;
 import java.util.ArrayList;
+import java.util.Collections;
+import java.util.Comparator;
 import java.util.Date;
 import java.util.List;
 import java.util.Locale;
@@ -82,14 +84,25 @@ public class latesttabfragment extends Fragment {
     }
     @RequiresApi(api = Build.VERSION_CODES.N)
     public void latesteventlist(List<event> eventList){
-        String date = new SimpleDateFormat("dd-MM-yyyy", Locale.getDefault()).format(new Date());
+        final String date = new SimpleDateFormat("dd-MM-yyyy", Locale.getDefault()).format(new Date());
         latestads = new ArrayList<>();
         for(int i = 0;i<eventList.size();i++) {
-            if (!date.equals(eventList.get(i).getEventDate())) {
-                latestads.add(eventList.get(i));
+//            if (!date.equals(eventList.get(i).getEventDate())) {
+//                latestads.add(eventList.get(i));
+//
+//            }
+            latestads.add(eventList.get(i));
+
+        }
+        Collections.sort(latestads, new Comparator<event>() {
+            @Override
+            public int compare(event o1, event o2) {
+                return o1.getUploadDate().compareTo(date);
 
             }
-        }
+        });
+        Collections.reverse(latestads);
+
         latestadsRecyclerView = view.findViewById(R.id.latest_tab_recycler_view);
         latestadsRecyclerAdapter = new todayAdsAdapter(getContext(),latestads);
         latestadsRecyclerView.setLayoutManager(new LinearLayoutManager(getContext()));
