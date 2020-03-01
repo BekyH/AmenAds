@@ -1,17 +1,35 @@
 <?xml version="1.0" encoding="utf-8"?>
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
     android:orientation="vertical" android:layout_width="match_parent"
+    xmlns:card_view="http://schemas.android.com/apk/res-auto"
     android:layout_height="wrap_content">
-    <com.google.android.material.card.MaterialCardView
-        android:id="@+id/ads_card_view"
+    <androidx.cardview.widget.CardView
+        android:id="@+id/church_card_view"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:elevation="20dp">
+        android:layout_gravity="center"
+        card_view:cardCornerRadius="17dp"
+        card_view:layout_constraintBottom_toBottomOf="parent"
+        card_view:layout_constraintEnd_toEndOf="parent"
+        card_view:layout_constraintHorizontal_bias="0.0"
+        card_view:layout_constraintStart_toStartOf="parent"
+        card_view:layout_constraintTop_toTopOf="parent"
+        card_view:layout_constraintVertical_bias="0.48"
+        card_view:cardUseCompatPadding="true">
+        <LinearLayout
+            android:orientation="horizontal"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content">
+        <ImageView
+            android:id="@+id/main_church_logo_image_view"
+            android:layout_width="70dp"
+            android:layout_height="70dp"/>
         <TextView
-            android:layout_width="match_parent"
-            android:layout_height="80dp"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
             android:id="@+id/main_church_text_view"
             android:gravity="center"
             android:textSize="24sp"/>
-    </com.google.android.material.card.MaterialCardView>
+        </LinearLayout>
+    </androidx.cardview.widget.CardView>
 </LinearLayout>
