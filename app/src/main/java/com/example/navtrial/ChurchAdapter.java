@@ -5,6 +5,7 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.TextView;
+import android.widget.Toast;
 
 import androidx.annotation.NonNull;
 import androidx.recyclerview.widget.RecyclerView;
@@ -17,11 +18,14 @@ import java.util.List;
 public class ChurchAdapter extends RecyclerView.Adapter<ChurchAdapter.viewHolder> {
     private Context context;
     private List<String> churches;
-    private List<church> nchurhches;
+    private List<church> nchurhches;;
+
+
 
     public ChurchAdapter(Context context,List<String> churches){
         this.context = context;
         this.churches = churches;
+
         LayoutInflater.from(context);
 
     }
@@ -35,13 +39,22 @@ public class ChurchAdapter extends RecyclerView.Adapter<ChurchAdapter.viewHolder
     }
 
     @Override
-    public void onBindViewHolder(@NonNull ChurchAdapter.viewHolder holder, int position) {
+    public void onBindViewHolder(@NonNull ChurchAdapter.viewHolder holder, final int position) {
+        holder.main_church_name.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                String ch = churches.get(position);
+
+
+            }
+        });
         if (churches!=null){
             String ch = churches.get(position);
 
             holder.main_church_name.setText(ch);
 
         }
+
 
     }
     public void setChurches(List<church> churches){
@@ -65,6 +78,8 @@ public class ChurchAdapter extends RecyclerView.Adapter<ChurchAdapter.viewHolder
         public viewHolder(@NonNull View itemView) {
             super(itemView);
             main_church_name = itemView.findViewById(R.id.main_church_text_view);
+
         }
+
     }
 }

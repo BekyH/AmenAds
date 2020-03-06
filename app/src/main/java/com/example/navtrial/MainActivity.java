@@ -12,6 +12,7 @@ import androidx.appcompat.app.AppCompatActivity;
 import androidx.appcompat.widget.Toolbar;
 import androidx.core.content.ContextCompat;
 import androidx.drawerlayout.widget.DrawerLayout;
+import androidx.fragment.app.FragmentManager;
 import androidx.fragment.app.FragmentTransaction;
 
 //import android.support.v7.app.ActionBarDrawerToggle;
@@ -52,6 +53,7 @@ public class MainActivity extends AppCompatActivity {
                 .addToBackStack(null)
         .commit();
         mytoolbar.setVisibility(View.INVISIBLE);
+
 
 
     }
@@ -141,6 +143,15 @@ public class MainActivity extends AppCompatActivity {
     @Override
     public void onBackPressed() {
 
+//        if (new adsFragment().viewPager.getCurrentItem() == 0) {
+//            // If the user is currently looking at the first step, allow the system to handle the
+//            // Back button. This calls finish() on this activity and pops the back stack.
+//            super.onBackPressed();
+//        } else {
+//            // Otherwise, select the previous step.
+//            new adsFragment().viewPager.setCurrentItem(new adsFragment().viewPager.getCurrentItem() - 1);
+//        }
+//
         if(backbuttoncount>=1){
             finish();
         }
@@ -149,6 +160,11 @@ public class MainActivity extends AppCompatActivity {
             backbuttoncount++;
 
         }
+//        if (getFragmentManager().getBackStackEntryCount() == 0) {
+//            this.finish();
+//        } else {
+//            getFragmentManager().popBackStack();
+//        }
 
 
     }

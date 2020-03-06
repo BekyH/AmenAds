@@ -34,7 +34,7 @@ import retrofit2.Call;
 import retrofit2.Callback;
 import retrofit2.Response;
 
-public class churchFragment extends Fragment {
+public class churchFragment extends Fragment  {
 
     ProgressDialog progressDialog;
 
@@ -104,7 +104,6 @@ public class churchFragment extends Fragment {
        });
         return view;
     }
-
 
 
 }

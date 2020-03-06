@@ -3,12 +3,14 @@ package com.example.navtrial;
 import android.app.ProgressDialog;
 import android.os.Build;
 import android.os.Bundle;
+import android.view.KeyEvent;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.Button;
 import android.widget.Toast;
 
+import androidx.activity.OnBackPressedCallback;
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
 import androidx.annotation.RequiresApi;
@@ -30,6 +32,13 @@ public class typetabfragment extends Fragment {
     public View onCreateView(@NonNull LayoutInflater inflater, @Nullable ViewGroup container, @Nullable Bundle savedInstanceState) {
 
                 view = inflater.inflate(R.layout.typetabfragment,container,false);
+//        OnBackPressedCallback callback = new OnBackPressedCallback(true) {
+//            @Override
+//            public void handleOnBackPressed() {
+//                getFragmentManager().popBackStack();
+//            }
+//        };
+//        requireActivity().getOnBackPressedDispatcher().addCallback(this, callback);
                 categories = new ArrayList<>();
                categories.add("Conference");
                categories.add("Concert");
@@ -45,5 +54,23 @@ public class typetabfragment extends Fragment {
 
                 return view;
     }
+//    @Override
+//    public void onResume() {
+//        super.onResume();
+//        getView().setFocusableInTouchMode(true);
+//        getView().requestFocus();
+//        getView().setOnKeyListener(new View.OnKeyListener() {
+//            @Override
+//            public boolean onKey(View v, int keyCode, KeyEvent event) {
+//                if (event.getAction() == KeyEvent.ACTION_UP && keyCode == KeyEvent.KEYCODE_BACK) {
+//                    if (getChildFragmentManager().getBackStackEntryCount() > 0)
+//                        getChildFragmentManager().popBackStack();
+//
+//                    return true;
+//                }
+//                return false;
+//            }
+//        });
+//    }
 
 }

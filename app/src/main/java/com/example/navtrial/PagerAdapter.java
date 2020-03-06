@@ -1,5 +1,7 @@
 package com.example.navtrial;
 
+import android.content.Context;
+
 import androidx.annotation.NonNull;
 import androidx.fragment.app.Fragment;
 import androidx.fragment.app.FragmentManager;
@@ -7,6 +9,7 @@ import androidx.fragment.app.FragmentStatePagerAdapter;
 
 public class PagerAdapter  extends FragmentStatePagerAdapter {
     int NumOfTabs;
+    Context context;
     public PagerAdapter(FragmentManager fm, int NumOfTabs) {
 
         super(fm);
@@ -20,16 +23,22 @@ public class PagerAdapter  extends FragmentStatePagerAdapter {
         switch (position){
             case 0:
                 alltabfragment tab1 = new alltabfragment();
-                return tab1;
+               return tab1;
             case 1:
                 todaytabfragment tab2 = new todaytabfragment();
+
                 return tab2;
+
             case 2:
                 latesttabfragment tab3 = new latesttabfragment();
+
                 return tab3;
+
             case 3:
                 typetabfragment tab4 = new typetabfragment();
+                    tab4.getParentFragment();
                 return tab4;
+
             default:
                 return null;
         }
@@ -39,4 +48,5 @@ public class PagerAdapter  extends FragmentStatePagerAdapter {
     public int getCount() {
         return NumOfTabs;
     }
+
 }
