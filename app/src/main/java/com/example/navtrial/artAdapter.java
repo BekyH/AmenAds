@@ -45,7 +45,7 @@ public class artAdapter extends RecyclerView.Adapter<artAdapter.ViewHolder> {
 
             holder.ads_name.setText(ad.getName());
             //Picasso.get().load("http://10.0.2.2:3000/api/containers/ads/download/" + ad.getImage()).into(holder.im);
-            Picasso.get().load("http://10.5.227.20:3000/api/containers/ads/download/" + ad.getImage()).into(holder.im);
+            Picasso.get().load("http://10.6.234.228:3000/api/containers/ads/download/" + ad.getImage()).into(holder.im);
             holder.ads_organizer.setText(ad.getOrganizer());
             holder.ads_location.setText(ad.getLocation());
             holder.ads_date.setText(ad.getEventDate());
