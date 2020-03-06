@@ -137,6 +137,7 @@ public class churchBranchAdapter extends RecyclerView.Adapter<churchBranchAdapte
 
     public class ViewHolder extends RecyclerView.ViewHolder{
         public TextView branch_church_name;
+
         public ViewHolder(@NonNull View itemView) {
             super(itemView);
             branch_church_name = itemView.findViewById(R.id.branch_church_text_view);
