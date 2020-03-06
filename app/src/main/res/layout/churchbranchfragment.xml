@@ -7,5 +7,5 @@
     <androidx.recyclerview.widget.RecyclerView
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        android:id="@+id/church_detail_recycler_view"></androidx.recyclerview.widget.RecyclerView>
+        android:id="@+id/church_branch_recycler_view"></androidx.recyclerview.widget.RecyclerView>
 </LinearLayout>
