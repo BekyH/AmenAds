@@ -120,6 +120,7 @@ public class churchBranchAdapter extends RecyclerView.Adapter<churchBranchAdapte
             church branch = churches.get(position);
 
             holder.branch_church_name.setText(branch.getChurchName());
+            holder.branchTitle.setText(branch.getMainchurch() + "Branch");
 
         }
 
@@ -137,10 +138,12 @@ public class churchBranchAdapter extends RecyclerView.Adapter<churchBranchAdapte
 
     public class ViewHolder extends RecyclerView.ViewHolder{
         public TextView branch_church_name;
+        public TextView branchTitle;
 
         public ViewHolder(@NonNull View itemView) {
             super(itemView);
             branch_church_name = itemView.findViewById(R.id.branch_church_text_view);
+            branchTitle = itemView.findViewById(R.id.branch_title);
 
         }
     }

@@ -4,15 +4,11 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:orientation="vertical">
-    <TextView
-        android:id="@+id/church_branch_detail"
-        android:layout_width="match_parent"
-        android:layout_gravity="center"
-        android:layout_height="wrap_content"
-        android:textSize="24sp"
-        android:text="Branch church detail"></TextView>
+
     <androidx.recyclerview.widget.RecyclerView
         android:layout_width="match_parent"
         android:layout_height="match_parent"
+
+
         android:id="@+id/church_detail_recycler_view"></androidx.recyclerview.widget.RecyclerView>
 </LinearLayout>

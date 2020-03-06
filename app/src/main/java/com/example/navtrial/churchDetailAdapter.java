@@ -35,6 +35,7 @@ private List<church> mchurches;
     public void onBindViewHolder(@NonNull ViewHolder holder, int position) {
     if(mchurches!=null){
         church branches = mchurches.get(position);
+        holder.branchnametitle.setText(branches.getChurchName() + " Details");
         holder.branchName.setText(branches.getChurchName());
         holder.mainChurchName.setText(branches.getMainchurch());
         holder.phoneNumber.setText(branches.getChurchPhoneno());
@@ -59,6 +60,7 @@ private List<church> mchurches;
     }
 
     public class ViewHolder extends RecyclerView.ViewHolder{
+                public TextView branchnametitle;
         public TextView branchName;
         public TextView mainChurchName;
         public TextView phoneNumber;
@@ -68,6 +70,7 @@ private List<church> mchurches;
         public TextView churchBankAccount;
         public ViewHolder(@NonNull View itemView) {
             super(itemView);
+            branchnametitle = itemView.findViewById(R.id.detail_branch_church);
             branchName = itemView.findViewById(R.id.branch_name_text_view);
             mainChurchName = itemView.findViewById(R.id.main_church_name_text_view);
             churchLocation = itemView.findViewById(R.id.church_location_text_view);
