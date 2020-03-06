@@ -19,5 +19,5 @@
     <androidx.appcompat.widget.AppCompatImageView
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:src="@drawable/amenadslogo"/>
+        android:src="@drawable/amenlogo"/>
 </androidx.appcompat.widget.LinearLayoutCompat>
