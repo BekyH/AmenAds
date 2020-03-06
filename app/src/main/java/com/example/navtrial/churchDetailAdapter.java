@@ -37,6 +37,7 @@ private List<church> mchurches;
         church branches = mchurches.get(position);
         holder.branchName.setText(branches.getChurchName());
         holder.mainChurchName.setText(branches.getMainchurch());
+        holder.phoneNumber.setText(branches.getChurchPhoneno());
         holder.churchLocation.setText(branches.getLocation());
         holder.churchProgram.setText(branches.getProgram());
         holder.churchDescritpion.setText(branches.getDescription());
@@ -60,6 +61,7 @@ private List<church> mchurches;
     public class ViewHolder extends RecyclerView.ViewHolder{
         public TextView branchName;
         public TextView mainChurchName;
+        public TextView phoneNumber;
         public TextView churchLocation;
         public TextView churchProgram;
         public TextView churchDescritpion;
@@ -72,6 +74,7 @@ private List<church> mchurches;
             churchProgram = itemView.findViewById(R.id.church_program_text_view);
             churchDescritpion = itemView.findViewById(R.id.church_description_text_view);
             churchBankAccount = itemView.findViewById(R.id.church_bank_account_text_view);
+            phoneNumber = itemView.findViewById(R.id.branch_church_phone_text_view);
         }
     }
 }

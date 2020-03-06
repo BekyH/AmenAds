@@ -29,7 +29,7 @@ import retrofit2.Callback;
 public class churchBranchFragment extends Fragment {
 
 
-    ArrayList<String> branchchurches;
+
     List<church> mch;
     View view;
     public RecyclerView BranchchurchRecyclerView;
@@ -46,7 +46,7 @@ public class churchBranchFragment extends Fragment {
 
 
         BranchchurchRecyclerAdapter = new churchBranchAdapter(getContext(),this.mch);
-        // churchRecyclerAdapter = new ChurchAdapter(getContext(),mch);
+
         BranchchurchRecyclerView.setLayoutManager(new LinearLayoutManager(getContext()));
 
 

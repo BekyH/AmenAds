@@ -26,13 +26,13 @@ public class church {
     public String program;
     @SerializedName("location")
     public String location;
-    @SerializedName("bankAccount")
-    public String bankAccount;
+    @SerializedName("BankAccount")
+    public String BankAccount;
 
-    public church(String mainchurch,String program, String name,String phoneno,String description,String location,String bankAccount){
+    public church(String mainchurch,String program, String name,String phoneno,String description,String location,String BankAccount){
         this.name = name;
         this.location = location;
-        this.bankAccount = bankAccount;
+        this.BankAccount = BankAccount;
         this.phoneno = phoneno;
         this.mainchurch = mainchurch;
         this.description = description;
@@ -58,6 +58,6 @@ public class church {
         return this.location;
     }
     public String getBankAccount(){
-        return this.bankAccount;
+        return this.BankAccount;
     }
 }
