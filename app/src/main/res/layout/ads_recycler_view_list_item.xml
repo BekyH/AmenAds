@@ -14,7 +14,7 @@
 			android:orientation="vertical"
 			android:padding="10dp">
 			<ImageView
-                android:id="@+id/image_view"
+				android:id="@+id/image_view"
 
 				android:adjustViewBounds="true"
 				android:layout_width="match_parent"
@@ -31,13 +31,13 @@
 					android:layout_height="wrap_content"
 					android:text="Name"
 					android:textSize="24sp"></TextView>
-			<TextView
-				android:layout_width="wrap_content"
-				android:layout_height="wrap_content"
-				android:id="@+id/ads_name_text_view_card_view"
-				android:textSize="24sp"
-				android:layout_marginLeft="16dp"
-				/>
+				<TextView
+					android:layout_width="wrap_content"
+					android:layout_height="wrap_content"
+					android:id="@+id/ads_name_text_view_card_view"
+					android:textSize="24sp"
+					android:layout_marginLeft="16dp"
+					/>
 			</LinearLayout>
 			<LinearLayout
 				android:layout_width="match_parent"
@@ -49,13 +49,13 @@
 					android:layout_height="wrap_content"
 					android:text="Organizer"
 					android:textSize="24sp"></TextView>
-			<TextView
-				android:layout_width="match_parent"
-				android:layout_height="wrap_content"
-				android:id="@+id/ads_organizer_text_view"
-				android:textSize="24sp"
-				android:layout_marginLeft="16dp"
-				/>
+				<TextView
+					android:layout_width="match_parent"
+					android:layout_height="wrap_content"
+					android:id="@+id/ads_organizer_text_view"
+					android:textSize="24sp"
+					android:layout_marginLeft="16dp"
+					/>
 			</LinearLayout>
 			<LinearLayout
 				android:layout_width="match_parent"
@@ -68,13 +68,13 @@
 					android:text="Location"
 					android:textSize="24sp"></TextView>
 
-			<TextView
-				android:layout_width="match_parent"
-				android:layout_height="wrap_content"
-				android:id="@+id/ads_location_text_view"
-				android:textSize="24sp"
-				android:layout_marginLeft="16dp"
-				/>
+				<TextView
+					android:layout_width="match_parent"
+					android:layout_height="wrap_content"
+					android:id="@+id/ads_location_text_view"
+					android:textSize="24sp"
+					android:layout_marginLeft="16dp"
+					/>
 			</LinearLayout>
 			<LinearLayout
 				android:layout_width="match_parent"
@@ -86,13 +86,13 @@
 					android:layout_height="wrap_content"
 					android:text="Date"
 					android:textSize="24sp"></TextView>
-			<TextView
-				android:layout_width="match_parent"
-				android:layout_height="wrap_content"
-				android:id="@+id/ads_date_text_view"
-				android:textSize="24sp"
-				android:layout_marginLeft="16dp"
-				/>
+				<TextView
+					android:layout_width="match_parent"
+					android:layout_height="wrap_content"
+					android:id="@+id/ads_date_text_view"
+					android:textSize="24sp"
+					android:layout_marginLeft="16dp"
+					/>
 			</LinearLayout>
 		</LinearLayout>
 
