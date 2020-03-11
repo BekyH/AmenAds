@@ -1,12 +1,17 @@
 <?xml version="1.0" encoding="utf-8"?>
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
-    android:orientation="vertical" android:layout_width="match_parent"
+    xmlns:card_view="http://schemas.android.com/apk/res-auto"
+    android:orientation="vertical"
+    android:layout_width="match_parent"
     android:layout_height="wrap_content">
     <com.google.android.material.card.MaterialCardView
         android:id="@+id/ads_card_view"
         android:layout_width="match_parent"
         android:layout_height="80dp"
-        android:elevation="20dp">
+        android:elevation="20dp"
+        card_view:cardCornerRadius="17dp"
+
+        card_view:cardUseCompatPadding="true">
         <LinearLayout
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
@@ -16,14 +21,14 @@
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:textSize="24sp"
-                android:gravity="center"
+                android:layout_marginLeft="16dp"
                 android:id="@+id/branch_title"/>
 
         <TextView
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:id="@+id/branch_church_text_view"
-
+            android:gravity="center"
             android:textSize="24sp"/>
         </LinearLayout>
     </com.google.android.material.card.MaterialCardView>

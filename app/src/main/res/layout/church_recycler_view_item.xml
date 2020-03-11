@@ -10,7 +10,8 @@
 
         card_view:cardCornerRadius="17dp"
 
-        card_view:cardUseCompatPadding="true">
+        card_view:cardUseCompatPadding="true"
+        >
 
 
         <TextView
